@@ -4,6 +4,7 @@ package com.alexkaz.barleybreak;
 import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.util.Log;

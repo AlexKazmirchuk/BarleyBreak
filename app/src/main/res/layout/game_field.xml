@@ -143,10 +143,10 @@
                      android:layout_marginRight="@dimen/game_field_panel_margin"
                      android:layout_marginLeft="@dimen/game_field_panel_margin"
                      android:layout_marginBottom="@dimen/game_field_panel_margin"
-                     android:paddingLeft="@dimen/game_field_panel_margin"
-                     android:paddingRight="@dimen/game_field_panel_margin"
-                     android:paddingBottom="@dimen/game_field_panel_margin"
-                     android:paddingTop="@dimen/game_field_panel_margin_top">
+                     android:paddingLeft="@dimen/game_field_panel_padding"
+                     android:paddingRight="@dimen/game_field_panel_padding"
+                     android:paddingBottom="@dimen/game_field_panel_padding"
+                     android:paddingTop="@dimen/game_field_panel_padding">
         </FrameLayout>
 
     </LinearLayout>

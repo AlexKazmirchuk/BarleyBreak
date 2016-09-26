@@ -200,16 +200,13 @@ public class Cell {
 
     private void getSizes(int height, int width) {
 
-        float fHeight = height;
-        float fWidth = width;
+        float fxSize = ((float) width /400.0f)*90;
+        float fxBorder = ((float) width /400.0f)*7;
+        float fxPivot = ((float) width /400.0f)*11;  //15
 
-        float fxSize = (fWidth/400)*90;
-        float fxBorder = (fWidth/400)*7;
-        float fxPivot = (fWidth/400)*15;
-
-        float fySize = (fHeight/400)*90;
-        float fyBorder = (fHeight/400)*7;
-        float fyPivot = (fHeight/400)*15;
+        float fySize = ((float) height /400.0f)*90;
+        float fyBorder = ((float) height /400.0f)*7;
+        float fyPivot = ((float) height /400.0f)*12; //15
 
         sizeX = (int) fxSize;
         borderX = (int) fxBorder;
