@@ -2,6 +2,7 @@ package com.alexkaz.barleybreak;
 
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -26,6 +27,8 @@ public class GameFieldActivity extends AppCompatActivity {
     private GameFieldCanvas gameFieldCanvas;
     private IndicatorView indicatorView;
 
+    private Typeface digitTapeFace;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,7 @@ public class GameFieldActivity extends AppCompatActivity {
 
 
     private void initComp(){
+        digitTapeFace = Typeface.createFromAsset(getAssets(),"digital.TTF");
         gameFieldPanel = (FrameLayout)findViewById(R.id.gameFieldPanel);
         indicatorPanel = (FrameLayout)findViewById(R.id.indicatorPanel);
         allInfo = (LinearLayout)findViewById(R.id.all_info);
@@ -64,7 +68,6 @@ public class GameFieldActivity extends AppCompatActivity {
 
         gameFieldPanel.addView(gameFieldCanvas);
         indicatorPanel.addView(indicatorView);
-
     }
 
     private void setAnim(){
@@ -110,5 +113,9 @@ public class GameFieldActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.first_to_right, R.anim.second_to_right);
+    }
+
+    public Typeface getDigitTapeFace(){
+        return digitTapeFace;
     }
 }
