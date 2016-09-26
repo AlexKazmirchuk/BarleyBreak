@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/background">
+
+    <LinearLayout android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+                  android:background="@drawable/second_background"
+                  android:layout_margin="@dimen/root_layout_margin"
+                  android:orientation="vertical">
+
+        <LinearLayout android:layout_width="fill_parent"
+                      android:orientation="horizontal"
+                      android:layout_height="fill_parent"
+                      android:layout_weight="@integer/top_btn_layout_weight">
+
+            <RelativeLayout android:layout_width="fill_parent"
+                          android:layout_height="fill_parent"
+                          android:layout_weight="60"
+                          android:layout_marginTop="@dimen/scores_field_margin_top"
+                          android:layout_marginBottom="@dimen/scores_field_margin_bottom"
+                          android:layout_marginRight="@dimen/scores_field_margin_right"
+                          android:layout_marginLeft="@dimen/scores_field_margin_left"
+                          android:background="@drawable/scores_field"
+                          android:id="@+id/stepInfo">
+
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="@string/scores"
+                          android:textSize="12sp"
+                          android:textColor="#8b8b81"
+                          android:textStyle="bold"
+                          android:id="@+id/txtScores"
+                          android:gravity="center_horizontal|center_vertical"
+                          android:layout_marginStart="15dp"
+                          android:layout_marginLeft="15dp"
+                          android:layout_marginTop="18dp"
+                          android:layout_alignParentTop="true"
+                          android:layout_alignParentStart="true"
+                          android:layout_alignParentLeft="true"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="STEPS:300"
+                        android:textColor="#8b8b81"
+                        android:id="@+id/txtLimitStep"
+                        android:textSize="12sp"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_above="@+id/stepProgressBar"
+                        android:layout_toEndOf="@+id/txtScores"
+                        android:layout_toRightOf="@+id/txtScores"/>
+                <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/stepProgressBar"
+
+                        android:progressDrawable="@drawable/progress_bar_shape"
+
+                        android:layout_below="@+id/txtScores"
+                        android:layout_alignStart="@+id/txtScores"
+                        android:layout_alignLeft="@+id/txtScores"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_alignEnd="@+id/txtLimitStep"
+                        android:layout_alignRight="@+id/txtLimitStep"/>
+
+            </RelativeLayout>
+
+
+
+            <Button android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/restart_selector"
+                    android:text="RESTART"
+                    android:textColor="#8b8b81"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:layout_weight="100"
+                    android:layout_marginTop="@dimen/restart_btn_margin_top"
+                    android:layout_marginBottom="@dimen/restart_btn_margin_bottom"
+                    android:layout_marginRight="@dimen/restart_btn_margin_right"
+                    android:layout_marginLeft="@dimen/restart_btn_margin_left"
+                    android:onClick="onRestart"
+                    android:id="@+id/restartBtn"/>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout android:layout_width="fill_parent"
+                      android:layout_height="fill_parent"
+                      android:background="@drawable/all_information_panel"
+                      android:layout_marginLeft="@dimen/all_info_margin_left_right"
+                      android:layout_marginRight="@dimen/all_info_margin_left_right"
+                      android:layout_weight="@integer/all_info_weight"
+                      android:orientation="horizontal"
+                      android:id="@+id/all_info">
+
+            <TextView android:layout_width="fill_parent"
+                      android:layout_height="fill_parent"
+                      android:text="@string/best_record_text"
+                      android:textSize="@dimen/best_scores_text_size"
+                      android:textColor="#49badc"
+                      android:paddingTop="@dimen/best_scores_padding_top"
+                      android:textStyle="bold"
+                      android:background="@drawable/best_scores_panel"
+                      android:layout_marginTop="@dimen/best_scores_margin_top"
+                      android:layout_marginLeft="@dimen/best_scores_margin_left"
+                      android:layout_marginBottom="@dimen/best_scores_margin_bottom"
+                      android:layout_marginRight="@dimen/best_scores_margin_right"
+                      android:layout_weight="2"
+                      android:gravity="center_horizontal|center_vertical"
+                      android:id="@+id/txtBestScores"/>
+
+            <FrameLayout android:layout_width="fill_parent"
+                         android:layout_height="fill_parent"
+                         android:background="@drawable/right_collected"
+                         android:layout_marginTop="@dimen/indicator_panel_margin_top"
+                         android:layout_marginRight="@dimen/indicator_panel_margin_right"
+                         android:layout_marginBottom="@dimen/indicator_panel_margin_bottom"
+                         android:layout_marginLeft="@dimen/indicator_panel_margin_left"
+                         android:layout_weight="2"
+                         android:paddingTop="@dimen/indicator_panel_padding_top"
+                         android:paddingBottom="@dimen/indicator_panel_padding_bottom"
+                         android:paddingLeft="@dimen/indicator_panel_padding_left"
+                         android:paddingRight="@dimen/indicator_panel_padding_left"
+                         android:id="@+id/indicatorPanel">
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <FrameLayout android:layout_width="fill_parent"
+                     android:layout_height="fill_parent"
+                     android:background="@drawable/game_field_panel"
+                     android:id="@+id/gameFieldPanel"
+                     android:layout_weight="@integer/game_field_panel_weight"
+                     android:layout_marginTop="@dimen/game_field_panel_margin_top"
+                     android:layout_marginRight="@dimen/game_field_panel_margin"
+                     android:layout_marginLeft="@dimen/game_field_panel_margin"
+                     android:layout_marginBottom="@dimen/game_field_panel_margin"
+                     android:paddingLeft="@dimen/game_field_panel_margin"
+                     android:paddingRight="@dimen/game_field_panel_margin"
+                     android:paddingBottom="@dimen/game_field_panel_margin"
+                     android:paddingTop="@dimen/game_field_panel_margin_top">
+        </FrameLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

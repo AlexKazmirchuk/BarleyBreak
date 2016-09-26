@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- дані для другого екрану-->
+    <dimen name="scores_field_text_size">16sp</dimen>
+    <dimen name="all_info_margin_left_right">15dp</dimen>
+    <dimen name="best_scores_text_size">37sp</dimen>
+    <dimen name="best_scores_padding_top">22dp</dimen>
+    <dimen name="indicator_panel_padding_top">27dp</dimen>
+    <dimen name="indicator_panel_padding_bottom">5dp</dimen>
+    <dimen name="indicator_panel_padding_left">37dp</dimen>
+    <dimen name="game_field_panel_margin_top">5dp</dimen>
+    <dimen name="game_field_panel_margin">10dp</dimen>
+    <dimen name="scores_field_margin_top">23dp</dimen>
+    <dimen name="scores_field_margin_bottom">16dp</dimen>
+    <dimen name="scores_field_margin_right">10dp</dimen>
+    <dimen name="scores_field_margin_left">23dp</dimen>
+    <dimen name="restart_btn_margin_top">23dp</dimen>
+    <dimen name="restart_btn_margin_bottom">16dp</dimen>
+    <dimen name="restart_btn_margin_right">23dp</dimen>
+    <dimen name="restart_btn_margin_left">10dp</dimen>
+    <dimen name="best_scores_margin_top">45dp</dimen>
+    <dimen name="best_scores_margin_left">15dp</dimen>
+    <dimen name="best_scores_margin_bottom">13dp</dimen>
+    <dimen name="best_scores_margin_right">5dp</dimen>
+    <dimen name="indicator_panel_margin_top">45dp</dimen>
+    <dimen name="indicator_panel_margin_right">15dp</dimen>
+    <dimen name="indicator_panel_margin_bottom">13dp</dimen>
+    <dimen name="indicator_panel_margin_left">5dp</dimen>
+    <!-- дані для другого екрану-->
+
+    <integer name="top_btn_layout_weight">105</integer>
+    <integer name="all_info_weight">99</integer>
+    <integer name="game_field_panel_weight">60</integer>
+
+</resources>

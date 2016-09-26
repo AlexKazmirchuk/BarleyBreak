@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="@drawable/background">
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="@dimen/root_layout_margin"
+            android:background="@drawable/second_background"
+            android:orientation="vertical">
+
+        <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/title"
+                android:layout_marginRight="@dimen/game_title_margin"
+                android:layout_marginLeft="@dimen/game_title_margin"
+                android:layout_marginTop="@dimen/game_title_margin"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="@integer/game_title_weight"
+                android:id="@+id/gameTitle"/>
+
+        <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/blue_panel_margin"
+                android:layout_weight="@integer/blue_panel_weight"
+                android:background="@drawable/blue_panel">
+
+            <FrameLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="@dimen/game_title_picture_margin"
+                    android:background="@drawable/game_field3d"
+                    android:id="@+id/game_title_picture"/>
+
+        </FrameLayout>
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="@integer/menu_btn_weight"
+                android:layout_marginBottom="@dimen/menu_btn_margin_bottom"
+                android:orientation="vertical">
+
+            <Button
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/new_game_selector"
+                    android:onClick="startGame"
+                    android:layout_weight="1"
+                    android:id="@+id/newGame"/>
+            <Button
+                    android:layout_width="@dimen/button_width"
+
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/options_selector"
+                    android:id="@+id/options"
+                    android:layout_weight="1"
+                    android:onClick="startOptions"/>
+            <Button
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/exit_selector"
+                    android:id="@+id/exit"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="@dimen/exit_btn_margin_bottom"
+                    android:onClick="startExit"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+

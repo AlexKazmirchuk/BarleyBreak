@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <dimen name="btn_height">60dp</dimen>
+    <dimen name="setting_title_text_size">33sp</dimen>
+    <dimen name="title_margin_left">20dp</dimen>
+    <dimen name="title_margin_right">20dp</dimen>
+    <dimen name="title_margin_top">40dp</dimen>
+    <dimen name="list_margin_left">10dp</dimen>
+    <dimen name="list_margin_right">10dp</dimen>
+    <dimen name="list_margin_bottom">60dp</dimen>
+    <dimen name="list_margin_top">30dp</dimen>
+    <dimen name="first_btn_text_size">27sp</dimen>
+    <dimen name="first_btn_margin">10dp</dimen>
+    <dimen name="all_btn_text_size">29sp</dimen>
+    <dimen name="all_margins_for_btn">10dp</dimen>
+</resources>
