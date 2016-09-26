@@ -38,7 +38,7 @@ public class Cell {
 
     private Paint cellPaint;
     private Paint numberPaint;
-
+    private int textPivot;
 
 
     //Конструктор
@@ -179,25 +179,22 @@ public class Cell {
         if (id == 16) {
             return;
         }
+
+        /////// text positioning
         String number = id + "";
         Rect textRect = new Rect();
         numberPaint.getTextBounds(number,0,number.length(),textRect);
         int x = this.location.posX + sizeX/2 - Math.round(numberPaint.measureText(number)/2);
         int y = this.location.posY + sizeY/2 + textRect.height()/2;
-//        /////// text rect ////////
-//        Paint rectPaint = new Paint();
-//        rectPaint.setColor(Color.DKGRAY);
-//        textRect.offset(x,y);
-//        g.drawRect(textRect,rectPaint);
-//        ////////////////////////
-//
-//
-//        //////   lines  ////////////////
-//        Paint linePaint = new Paint();
-//        linePaint.setColor(Color.GREEN);
-//        g.drawLine(this.location.posX,this.location.posY + sizeY/2,this.location.posX + sizeX,this.location.posY + sizeY/2,linePaint);
-//        g.drawLine(this.location.posX + sizeX/2,this.location.posY,this.location.posX + sizeX/2,this.location.posY + sizeY,linePaint);
-//        ////////////////////////////////
+
+        /////// draw text shadow
+        numberPaint.setColor(Color.parseColor("#452d2d"));
+        for (int i = 0; i < textPivot; i++) {
+            g.drawText(number, x + i, y + i, numberPaint );
+        }
+
+        ////// draw text
+        numberPaint.setColor(Color.parseColor("#2b1313"));
         g.drawText(number,x,y, numberPaint );
     }
 
@@ -221,13 +218,10 @@ public class Cell {
         borderY = (int) fyBorder;
         pivotY = (int) fyPivot;
 
-//        Log.d("sizesLog",sizeX + ""); // 87   0.4942
-//        numberPaint.setTextSize(sizeX * 0.494252f);
         numberPaint.setTextSize(sizeX * 0.594252f);
-
+        textPivot = Math.round(sizeX * 0.046f);
         location.posX = (sizeX*x) + borderX*x + pivotX;
         location.posY = (sizeY*y) + borderY*y + pivotY;
-//        selectSkinImage(this.id);
         if (id == 16){
             skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_sixteen);
         } else {
