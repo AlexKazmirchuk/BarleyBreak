@@ -16,61 +16,74 @@
                       android:layout_height="fill_parent"
                       android:layout_weight="@integer/top_btn_layout_weight">
 
-            <RelativeLayout android:layout_width="fill_parent"
-                          android:layout_height="fill_parent"
-                          android:layout_weight="60"
-                          android:layout_marginTop="@dimen/scores_field_margin_top"
-                          android:layout_marginBottom="@dimen/scores_field_margin_bottom"
-                          android:layout_marginRight="@dimen/scores_field_margin_right"
-                          android:layout_marginLeft="@dimen/scores_field_margin_left"
-                          android:background="@drawable/scores_field"
-                          android:id="@+id/stepInfo">
+            <RelativeLayout
+                android:id="@+id/stepInfo"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="45"
 
-                <TextView android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="@string/scores"
-                          android:textSize="12sp"
-                          android:textColor="#8b8b81"
-                          android:textStyle="bold"
-                          android:id="@+id/txtScores"
-                          android:gravity="center_horizontal|center_vertical"
-                          android:layout_marginStart="15dp"
-                          android:layout_marginLeft="15dp"
-                          android:layout_marginTop="18dp"
-                          android:layout_alignParentTop="true"
-                          android:layout_alignParentStart="true"
-                          android:layout_alignParentLeft="true"/>
+                android:layout_marginTop="@dimen/scores_field_margin_top"
+                android:layout_marginBottom="@dimen/scores_field_margin_bottom"
+                android:layout_marginRight="@dimen/scores_field_margin_right"
+                android:layout_marginLeft="@dimen/scores_field_margin_left"
+
+                android:padding="8dp"
+
+                android:background="@drawable/scores_field">
+
+                <View
+                    android:id="@+id/spaceView"
+                    android:layout_width="4dp"
+                    android:layout_height="7dp"
+
+                    android:layout_centerInParent="true"/>
+
                 <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="STEPS:300"
-                        android:textColor="#8b8b81"
-                        android:id="@+id/txtLimitStep"
-                        android:textSize="12sp"
-                        android:layout_marginStart="9dp"
-                        android:layout_marginLeft="9dp"
-                        android:layout_above="@+id/stepProgressBar"
-                        android:layout_toEndOf="@+id/txtScores"
-                        android:layout_toRightOf="@+id/txtScores"/>
+                    android:id="@+id/txtScores"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+
+                    android:text="@string/scores"
+                    android:textSize="12sp"
+                    android:textColor="#8b8b81"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@id/spaceView"
+                    android:layout_above="@id/spaceView"
+                    />
+                <TextView
+                    android:id="@+id/txtLimitStep"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:textStyle="bold"
+                    android:text="STEPS:300"
+                    android:textColor="#8b8b81"
+                    android:textSize="12sp"
+                    android:gravity="center_horizontal"
+
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/spaceView"
+                    android:layout_above="@id/spaceView"
+                    />
                 <ProgressBar
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/stepProgressBar"
+                    android:id="@+id/stepProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:progressDrawable="@drawable/progress_bar_bg"
 
-                        android:progressDrawable="@drawable/progress_bar_shape"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
 
-                        android:layout_below="@+id/txtScores"
-                        android:layout_alignStart="@+id/txtScores"
-                        android:layout_alignLeft="@+id/txtScores"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="20dp"
-                        android:layout_alignEnd="@+id/txtLimitStep"
-                        android:layout_alignRight="@+id/txtLimitStep"/>
+                    android:layout_below="@id/spaceView"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"/>
 
             </RelativeLayout>
-
-
 
             <Button android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
@@ -78,7 +91,7 @@
                     android:text="RESTART"
                     android:textColor="#8b8b81"
                     android:textStyle="bold"
-                    android:textSize="12sp"
+                    android:textSize="10sp"
                     android:layout_weight="100"
                     android:layout_marginTop="@dimen/restart_btn_margin_top"
                     android:layout_marginBottom="@dimen/restart_btn_margin_bottom"
@@ -88,8 +101,6 @@
                     android:id="@+id/restartBtn"/>
 
         </LinearLayout>
-
-
 
         <LinearLayout android:layout_width="fill_parent"
                       android:layout_height="fill_parent"
