@@ -105,8 +105,13 @@ public class GameFieldActivity extends AppCompatActivity {
 
     }
 
-    private int loadBestScores(){
-        return getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).getInt(LaunchActivity.BEST_RECORD,1);
+    public int loadBestScores(){
+        int record = getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).getInt(LaunchActivity.BEST_RECORD,1);
+        if (record == 1000){
+            return 0;
+        } else {
+            return getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).getInt(LaunchActivity.BEST_RECORD,1);
+        }
     }
 
     @Override

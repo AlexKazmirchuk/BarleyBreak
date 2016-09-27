@@ -93,7 +93,7 @@ public class GameFieldCanvas extends View {
                                 soundPool2.play(1,1,1,0,0,0);
                             }
                             stepCount = 0;
-                            txtBestScores.setText(String.valueOf(context.getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).getInt(LaunchActivity.BEST_RECORD,1000)));
+                            txtBestScores.setText(String.valueOf(context.loadBestScores()));
                             txtScores.setText("SCORES:" + String.valueOf(0));
                             context.stepProgressBar.setProgress(0);
                         }
@@ -112,7 +112,8 @@ public class GameFieldCanvas extends View {
 
 
                             stepCount = 0;
-                            txtBestScores.setText(String.valueOf(context.getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).getInt(LaunchActivity.BEST_RECORD,1000)));
+//                            txtBestScores.setText(String.valueOf(context.getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).getInt(LaunchActivity.BEST_RECORD,1000)));
+                            txtBestScores.setText(String.valueOf(context.loadBestScores()));
                             txtScores.setText("SCORES:" + String.valueOf(0));
                             context.stepProgressBar.setProgress(0);
 
