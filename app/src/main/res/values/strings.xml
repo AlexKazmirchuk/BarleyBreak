@@ -21,4 +21,6 @@
     <string name="options_btn_text">OPTIONS</string>
     <string name="exit_btn_text">EXIT</string>
     <string name="alert_btn_text">PLAY AGAIN</string>
+    <string name="txt_limit_text">STEPS:</string>
+    <string name="txt_scores_text">SCORES:</string>
 </resources>

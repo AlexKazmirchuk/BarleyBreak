@@ -107,7 +107,7 @@ public class GameFieldActivity extends AppCompatActivity {
                 limitStep = 300;
                 break;
         }
-        txtLimitStep.setText(String.valueOf("STEPS:" + limitStep));
+        txtLimitStep.setText(String.valueOf(getString(R.string.txt_limit_text) + limitStep));
         gameFieldCanvas.setMinStepCount(limitStep);
         stepProgressBar.setMax(limitStep);
 

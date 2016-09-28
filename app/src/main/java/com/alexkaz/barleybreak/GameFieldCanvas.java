@@ -96,11 +96,11 @@ public class GameFieldCanvas extends View {
                             }
                             stepCount = 0;
                             txtBestScores.setText(String.valueOf(context.loadBestScores()));
-                            txtScores.setText(String.valueOf("SCORES:" + 0));
+                            txtScores.setText(String.valueOf(context.getString(R.string.txt_scores_text) + 0));
                             context.stepProgressBar.setProgress(0);
                         }
                         else {
-                            txtScores.setText(String.valueOf("SCORES:" + stepCount));
+                            txtScores.setText(String.valueOf(context.getString(R.string.txt_scores_text) + stepCount));
                             context.stepProgressBar.setProgress(stepCount);
                         }
 
@@ -116,7 +116,7 @@ public class GameFieldCanvas extends View {
                             stepCount = 0;
 //                            txtBestScores.setText(String.valueOf(context.getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).getInt(LaunchActivity.BEST_RECORD,1000)));
                             txtBestScores.setText(String.valueOf(context.loadBestScores()));
-                            txtScores.setText(String.valueOf("SCORES:" + 0));
+                            txtScores.setText(String.valueOf(context.getString(R.string.txt_scores_text) + 0));
                             context.stepProgressBar.setProgress(0);
 
                             Log.d("myTag", "У вас закінчились кроки , ви програли!");
