@@ -1,185 +1,295 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@drawable/background">
-
-    <LinearLayout android:layout_width="fill_parent"
-                  android:layout_height="fill_parent"
-                  android:background="@drawable/second_background"
-                  android:layout_margin="@dimen/root_layout_margin"
-                  android:orientation="vertical">
-
-        <LinearLayout android:layout_width="fill_parent"
-                      android:orientation="horizontal"
-                      android:layout_height="fill_parent"
-                      android:layout_weight="@integer/top_btn_layout_weight">
-
-            <RelativeLayout
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+    <android.support.percent.PercentRelativeLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/second_background"
+        android:layout_margin="@dimen/root_layout_margin">
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/progressPanel"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_heightPercent="19%"
+            app:layout_widthPercent="100%"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
+            <android.support.percent.PercentRelativeLayout
                 android:id="@+id/stepInfo"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="45"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
 
-                android:layout_marginTop="@dimen/scores_field_margin_top"
-                android:layout_marginBottom="@dimen/scores_field_margin_bottom"
-                android:layout_marginRight="@dimen/scores_field_margin_right"
-                android:layout_marginLeft="@dimen/scores_field_margin_left"
+                app:layout_heightPercent="100%"
+                app:layout_widthPercent="58%"
 
-                android:padding="8dp"
+                app:layout_marginTopPercent="15%"
+                app:layout_marginLeftPercent="5%"
+                app:layout_marginBottomPercent="5%"
+                app:layout_marginRightPercent="0%"
 
                 android:background="@drawable/scores_field">
-
-                <View
-                    android:id="@+id/spaceView"
-                    android:layout_width="4dp"
-                    android:layout_height="7dp"
-
-                    android:layout_centerInParent="true"/>
-
                 <TextView
                     android:id="@+id/txtScores"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_heightPercent="35%"
+                    app:layout_widthPercent="45%"
 
+                    app:layout_marginTopPercent="20%"
+                    app:layout_marginLeftPercent="5%"
+                    app:layout_marginBottomPercent="0%"
+                    app:layout_marginRightPercent="0%"
 
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
                     android:text="@string/scores"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:textColor="#8b8b81"
                     android:textStyle="bold"
-                    android:gravity="center_horizontal"
-
-                    android:layout_alignParentLeft="true"
-                    android:layout_toLeftOf="@id/spaceView"
-                    android:layout_above="@id/spaceView"
-                    />
+                    android:gravity="center_horizontal|center_vertical"/>
                 <TextView
                     android:id="@+id/txtLimitStep"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_heightPercent="35%"
+                    app:layout_widthPercent="50%"
+
+                    app:layout_marginTopPercent="20%"
+                    app:layout_marginLeftPercent="0%"
+                    app:layout_marginBottomPercent="0%"
+                    app:layout_marginRightPercent="5%"
+
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/txtScores"
+                    android:layout_toEndOf="@id/txtScores"
 
                     android:textStyle="bold"
                     android:text="STEPS:300"
                     android:textColor="#8b8b81"
-                    android:textSize="12sp"
-                    android:gravity="center_horizontal"
-
-                    android:layout_alignParentRight="true"
-                    android:layout_toRightOf="@id/spaceView"
-                    android:layout_above="@id/spaceView"
-                    />
+                    android:textSize="14sp"
+                    android:gravity="center_horizontal|center_vertical"/>
                 <ProgressBar
                     android:id="@+id/stepProgressBar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="10dp"
+
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_heightPercent="50%"
+                    app:layout_widthPercent="100%"
+
+                    app:layout_marginTopPercent="5%"
+                    app:layout_marginLeftPercent="10%"
+                    app:layout_marginBottomPercent="30%"
+                    app:layout_marginRightPercent="10%"
+
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/txtScores"
+
                     style="?android:attr/progressBarStyleHorizontal"
                     android:progressDrawable="@drawable/progress_bar_bg"
-
                     android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="5dp"/>
 
-                    android:layout_below="@id/spaceView"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentRight="true"/>
+            </android.support.percent.PercentRelativeLayout>
+            <Button
+                android:id="@+id/restartBtn"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_toRightOf="@id/stepInfo"
+                android:layout_toEndOf="@id/stepInfo"
 
-            </RelativeLayout>
+                app:layout_heightPercent="100%"
+                app:layout_widthPercent="29%"
 
-            <Button android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="@drawable/restart_selector"
-                    android:text="RESTART"
-                    android:textColor="#8b8b81"
-                    android:textStyle="bold"
-                    android:textSize="10sp"
-                    android:layout_weight="100"
-                    android:layout_marginTop="@dimen/restart_btn_margin_top"
-                    android:layout_marginBottom="@dimen/restart_btn_margin_bottom"
-                    android:layout_marginRight="@dimen/restart_btn_margin_right"
-                    android:layout_marginLeft="@dimen/restart_btn_margin_left"
-                    android:onClick="onRestart"
-                    android:id="@+id/restartBtn"/>
+                app:layout_marginTopPercent="15%"
+                app:layout_marginLeftPercent="3%"
+                app:layout_marginBottomPercent="5%"
+                app:layout_marginRightPercent="5%"
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/all_info"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="@integer/all_info_weight"
-            android:orientation="vertical"
-            android:background="@drawable/all_info_bg"
-            android:layout_marginLeft="@dimen/all_info_margin_left_right"
-            android:layout_marginRight="@dimen/all_info_margin_left_right">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:text="ALL INFORMATION"
-                android:textSize="17sp"
+                android:background="@drawable/restart_selector"
+                android:text="RESTART"
                 android:textColor="#8b8b81"
                 android:textStyle="bold"
+                android:textSize="16sp"
+                android:onClick="onRestart"/>
+        </android.support.percent.PercentRelativeLayout>
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/all_info"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_heightPercent="24%"
+            app:layout_widthPercent="100%"
+            android:layout_below="@id/progressPanel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+
+            app:layout_marginTopPercent="0%"
+            app:layout_marginLeftPercent="5%"
+            app:layout_marginBottomPercent="0%"
+            app:layout_marginRightPercent="5%"
+
+            android:background="@drawable/all_info_bg">
+            <TextView
+                android:id="@+id/allInfoTitle"
+
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_heightPercent="26%"
+                app:layout_widthPercent="100%"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+
+                android:text="ALL INFORMATION"
+                android:textSize="17sp"
+                android:textColor="#8c8c8c"
+                android:textStyle="bold"
                 android:gravity="center_horizontal|bottom"
-                android:background="@drawable/all_info_title_bg"
-                />
+                android:background="@drawable/all_info_title_bg"/>
+            <android.support.percent.PercentRelativeLayout
+                android:id="@+id/bestScorePanel"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@id/allInfoTitle"
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:orientation="horizontal">
+                app:layout_heightPercent="58%"
+                app:layout_widthPercent="41%"
 
-                <TextView android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:text="@string/best_record_text"
-                    android:textSize="@dimen/best_scores_text_size"
-                    android:textColor="#49badc"
-                    android:paddingTop="@dimen/best_scores_padding_top"
-                    android:textStyle="bold"
-                    android:background="@drawable/best_scores_panel"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="@dimen/best_scores_margin_left"
-                    android:layout_marginBottom="@dimen/best_scores_margin_bottom"
-                    android:layout_marginRight="@dimen/best_scores_margin_right"
-                    android:layout_weight="2"
+                app:layout_marginTopPercent="8%"
+                app:layout_marginLeftPercent="7%"
+                app:layout_marginBottomPercent="10%"
+                app:layout_marginRightPercent="2%"
+                android:background="#284f6c">
+                <TextView
+                    android:id="@+id/bestScorePanelTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_heightPercent="35%"
+                    app:layout_widthPercent="100%"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:text="BEST RECORD"
+                    android:textColor="#81a0b8"
                     android:gravity="center_horizontal|center_vertical"
-                    android:id="@+id/txtBestScores"/>
+                    android:background="#334553"/>
+                <TextView
+                    android:id="@+id/txtBestScores"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_heightPercent="65%"
+                    app:layout_widthPercent="100%"
+                    android:layout_below="@id/bestScorePanelTitle"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/best_record_text"
+                    android:textSize="32sp"
+                    android:textColor="#81a0b8"
+                    android:gravity="center_horizontal|center_vertical"/>
+            </android.support.percent.PercentRelativeLayout>
+            <android.support.percent.PercentRelativeLayout
+                android:id="@+id/rightCollectedPanel"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@id/bestScorePanel"
+                android:layout_toEndOf="@id/bestScorePanel"
+                android:layout_below="@id/allInfoTitle"
 
-                <FrameLayout android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="@drawable/right_collected"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="@dimen/indicator_panel_margin_right"
-                    android:layout_marginBottom="@dimen/indicator_panel_margin_bottom"
-                    android:layout_marginLeft="@dimen/indicator_panel_margin_left"
-                    android:layout_weight="2"
-                    android:paddingTop="@dimen/indicator_panel_padding_top"
-                    android:paddingBottom="@dimen/indicator_panel_padding_bottom"
-                    android:paddingLeft="@dimen/indicator_panel_padding_left"
-                    android:paddingRight="@dimen/indicator_panel_padding_left"
-                    android:id="@+id/indicatorPanel">
+                app:layout_heightPercent="58%"
+                app:layout_widthPercent="41%"
 
+                app:layout_marginTopPercent="8%"
+                app:layout_marginLeftPercent="2%"
+                app:layout_marginBottomPercent="10%"
+                app:layout_marginRightPercent="7%"
+                android:background="#284f6c">
+                <TextView
+                    android:id="@+id/rightCollectedTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_heightPercent="35%"
+                    app:layout_widthPercent="100%"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="12sp"
+                    android:text="RIGHT COLLECTED"
+                    android:textColor="#81a0b8"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:background="#334553"/>
+                <FrameLayout
+                    android:id="@+id/indicatorPanel"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_below="@id/rightCollectedTitle"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+
+
+                    app:layout_heightPercent="49%"
+                    app:layout_widthPercent="34%"
+
+                    app:layout_marginTopPercent="8%"
+                    app:layout_marginLeftPercent="33%"
+                    app:layout_marginBottomPercent="8%"
+                    app:layout_marginRightPercent="33%">
                 </FrameLayout>
-
-            </LinearLayout>
-        </LinearLayout>
-
-
-
-        <FrameLayout android:layout_width="fill_parent"
-                     android:layout_height="fill_parent"
-                     android:background="@drawable/game_field_panel"
-                     android:id="@+id/gameFieldPanel"
-                     android:layout_weight="@integer/game_field_panel_weight"
-                     android:layout_marginTop="@dimen/game_field_panel_margin_top"
-                     android:layout_marginRight="@dimen/game_field_panel_margin"
-                     android:layout_marginLeft="@dimen/game_field_panel_margin"
-                     android:layout_marginBottom="@dimen/game_field_panel_margin"
-                     android:paddingLeft="@dimen/game_field_panel_padding"
-                     android:paddingRight="@dimen/game_field_panel_padding"
-                     android:paddingBottom="@dimen/game_field_panel_padding"
-                     android:paddingTop="@dimen/game_field_panel_padding">
+            </android.support.percent.PercentRelativeLayout>
+        </android.support.percent.PercentRelativeLayout>
+        <FrameLayout
+            android:id="@+id/gameFieldPanel"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@id/all_info"
+            app:layout_heightPercent="57%"
+            app:layout_widthPercent="100%"
+            android:background="@drawable/game_field_panel"
+            android:layout_marginTop="@dimen/game_field_panel_margin_top"
+            android:layout_marginRight="@dimen/game_field_panel_margin"
+            android:layout_marginLeft="@dimen/game_field_panel_margin"
+            android:layout_marginBottom="@dimen/game_field_panel_margin"
+            android:paddingLeft="@dimen/game_field_panel_padding"
+            android:paddingRight="@dimen/game_field_panel_padding"
+            android:paddingBottom="@dimen/game_field_panel_padding"
+            android:paddingTop="@dimen/game_field_panel_padding">
         </FrameLayout>
-
-    </LinearLayout>
-
-</LinearLayout>
+    </android.support.percent.PercentRelativeLayout>
+</FrameLayout>
