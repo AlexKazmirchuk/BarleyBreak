@@ -12,7 +12,10 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/alert_btn"
+        android:background="@drawable/alert_btn_bg"
+        android:text="@string/alert_btn_text"
+        android:textSize="24sp"
+        android:textColor="#8c8c8c"
 
     />
 </RelativeLayout>
