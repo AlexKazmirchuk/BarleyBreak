@@ -48,31 +48,40 @@
                 android:orientation="vertical">
 
             <Button
-                    android:layout_width="@dimen/button_width"
-                    android:layout_height="fill_parent"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/new_game_selector"
-                    android:onClick="startGame"
-                    android:layout_weight="1"
-                    android:id="@+id/newGame"/>
+                android:layout_width="@dimen/button_width"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:onClick="startGame"
+                android:layout_weight="1"
+                android:background="@drawable/launch_btn_selector"
+                android:text="@string/new_game_btn_text"
+                android:textColor="#ffaeae"
+                android:textSize="22sp"
+                android:id="@+id/newGame"/>
             <Button
-                    android:layout_width="@dimen/button_width"
+                android:layout_width="@dimen/button_width"
 
-                    android:layout_height="fill_parent"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/options_selector"
-                    android:id="@+id/options"
-                    android:layout_weight="1"
-                    android:onClick="startOptions"/>
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/launch_btn_selector"
+                android:text="@string/options_btn_text"
+                android:textColor="#ffaeae"
+                android:textSize="22sp"
+                android:id="@+id/options"
+                android:layout_weight="1"
+                android:onClick="startOptions"/>
             <Button
-                    android:layout_width="@dimen/button_width"
-                    android:layout_height="fill_parent"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/exit_selector"
-                    android:id="@+id/exit"
-                    android:layout_weight="1"
-                    android:layout_marginBottom="@dimen/exit_btn_margin_bottom"
-                    android:onClick="startExit"/>
+                android:layout_width="@dimen/button_width"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/launch_btn_selector"
+                android:text="@string/exit_btn_text"
+                android:textColor="#ffaeae"
+                android:textSize="22sp"
+                android:id="@+id/exit"
+                android:layout_weight="1"
+                android:layout_marginBottom="@dimen/exit_btn_margin_bottom"
+                android:onClick="startExit"/>
 
         </LinearLayout>
 

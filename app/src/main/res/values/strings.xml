@@ -17,4 +17,7 @@
     <string name="difficulty_low">Difficulty: low</string>
     <string name="sound_off">Sound: off</string>
     <string name="sound_on">Sound: on</string>
+    <string name="new_game_btn_text">NEW GAME</string>
+    <string name="options_btn_text">OPTIONS</string>
+    <string name="exit_btn_text">EXIT</string>
 </resources>

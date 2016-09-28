@@ -3,6 +3,7 @@ package com.alexkaz.barleybreak;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -32,12 +33,17 @@ public class LaunchActivity extends AppCompatActivity {
     }
 
     private void initComp(){
+        Typeface neuralTypeFace = Typeface.createFromAsset(getAssets(), "NEURAL2.TTF");
         gameTitle = (FrameLayout)findViewById(R.id.gameTitle);
         gameTitlePicture = (FrameLayout)findViewById(R.id.game_title_picture);
 
         newGame = (Button)findViewById(R.id.newGame);
         options = (Button)findViewById(R.id.options);
         exit = (Button)findViewById(R.id.exit);
+
+        newGame.setTypeface(neuralTypeFace);
+        options.setTypeface(neuralTypeFace);
+        exit.setTypeface(neuralTypeFace);
     }
 
     private void setAnim(){
