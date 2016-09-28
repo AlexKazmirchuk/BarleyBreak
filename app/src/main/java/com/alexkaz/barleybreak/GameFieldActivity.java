@@ -24,10 +24,8 @@ public class GameFieldActivity extends AppCompatActivity {
     public ProgressBar stepProgressBar;
 
     private GameFieldCanvas gameFieldCanvas;
-    private IndicatorView indicatorView;
 
     private Typeface digitTapeFace;
-    private Typeface impactTypeFace;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,7 +42,7 @@ public class GameFieldActivity extends AppCompatActivity {
 
     private void initComp(){
         digitTapeFace = Typeface.createFromAsset(getAssets(),"digital.TTF");
-        impactTypeFace = Typeface.createFromAsset(getAssets(),"impact.ttf");
+        Typeface impactTypeFace = Typeface.createFromAsset(getAssets(), "impact.ttf");
         gameFieldPanel = (FrameLayout)findViewById(R.id.gameFieldPanel);
         indicatorPanel = (FrameLayout)findViewById(R.id.indicatorPanel);
         allInfo = (PercentRelativeLayout)findViewById(R.id.all_info);
@@ -64,7 +62,7 @@ public class GameFieldActivity extends AppCompatActivity {
         gameFieldCanvas.setTxtScores(txtScores);
         gameFieldCanvas.setTxtBestScores(txtBestScores);
 
-        indicatorView = new IndicatorView(this);
+        IndicatorView indicatorView = new IndicatorView(this);
         gameFieldCanvas.setIndicatorView(indicatorView);
 
         gameFieldPanel.addView(gameFieldCanvas);
@@ -109,7 +107,7 @@ public class GameFieldActivity extends AppCompatActivity {
                 limitStep = 300;
                 break;
         }
-        txtLimitStep.setText("STEPS:" + limitStep);
+        txtLimitStep.setText(String.valueOf("STEPS:" + limitStep));
         gameFieldCanvas.setMinStepCount(limitStep);
         stepProgressBar.setMax(limitStep);
 

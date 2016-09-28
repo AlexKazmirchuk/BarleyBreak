@@ -1,16 +1,16 @@
 package com.alexkaz.barleybreak;
 
-
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,9 +38,9 @@ public class GameFieldCanvas extends View {
 //    int posX = 156;
 //    int posY = 134;
 
-    public GameFieldCanvas(GameFieldActivity context) {
+    public GameFieldCanvas(Context context) {
         super(context);
-        this.context = context;
+        this.context = (GameFieldActivity) context;
 
         setOwnParameters();
         initComponents();
@@ -49,7 +49,11 @@ public class GameFieldCanvas extends View {
     //Методы
     private void initComponents() {
         cellPositionManager = new CellPositionManager(context);
+        initSoundPools();
+    }
 
+    @SuppressWarnings("deprecation")
+    private void initSoundPools(){
         soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
         soundPool.load(context,R.raw.click, 1);
 
@@ -58,8 +62,6 @@ public class GameFieldCanvas extends View {
 
         soundPool3 = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
         soundPool3.load(context,R.raw.game_over_sound, 1);
-
-
     }
 
 
@@ -94,11 +96,11 @@ public class GameFieldCanvas extends View {
                             }
                             stepCount = 0;
                             txtBestScores.setText(String.valueOf(context.loadBestScores()));
-                            txtScores.setText("SCORES:" + String.valueOf(0));
+                            txtScores.setText(String.valueOf("SCORES:" + 0));
                             context.stepProgressBar.setProgress(0);
                         }
                         else {
-                            txtScores.setText("SCORES:" + String.valueOf(stepCount));
+                            txtScores.setText(String.valueOf("SCORES:" + stepCount));
                             context.stepProgressBar.setProgress(stepCount);
                         }
 
@@ -114,7 +116,7 @@ public class GameFieldCanvas extends View {
                             stepCount = 0;
 //                            txtBestScores.setText(String.valueOf(context.getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).getInt(LaunchActivity.BEST_RECORD,1000)));
                             txtBestScores.setText(String.valueOf(context.loadBestScores()));
-                            txtScores.setText("SCORES:" + String.valueOf(0));
+                            txtScores.setText(String.valueOf("SCORES:" + 0));
                             context.stepProgressBar.setProgress(0);
 
                             Log.d("myTag", "У вас закінчились кроки , ви програли!");
@@ -216,7 +218,7 @@ public class GameFieldCanvas extends View {
     }
 
     private void youWonDialog(){
-        View alertView = context.getLayoutInflater().inflate(R.layout.win_dialog, null);
+        View alertView = context.getLayoutInflater().inflate(R.layout.win_dialog, new LinearLayout(context));
 
         final Dialog myDialog = new Dialog(context, R.style.CustomAlertDialog);
         myDialog.setContentView(alertView);
@@ -236,7 +238,7 @@ public class GameFieldCanvas extends View {
     }
 
     private  void youLoseDialog(){
-        View alertView = context.getLayoutInflater().inflate(R.layout.lose_dialog, null);
+        View alertView = context.getLayoutInflater().inflate(R.layout.lose_dialog, new LinearLayout(context));
 
         final Dialog myDialog = new Dialog(context, R.style.CustomAlertDialog);
         myDialog.setContentView(alertView);

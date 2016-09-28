@@ -37,9 +37,9 @@ public class CellPositionManager {
 
 
     public void draw(Canvas g){
-        for (int i = 0; i < cells.length; i++) {
+        for (Cell[] cell : cells) {
             for (int j = 0; j < cells.length; j++) {
-                cells[i][j].draw(g);
+                cell[j].draw(g);
             }
         }
     }

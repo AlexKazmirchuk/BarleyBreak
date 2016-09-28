@@ -14,8 +14,6 @@ public class IndicatorView extends View {
     Context context;
 
     public static final int RECT_SIDE_SIZE = 10;
-    public static final int BORDER_SIZE = 15;
-
 
     private int rectSideSizeX;
     private int borderSizeX;
@@ -23,18 +21,10 @@ public class IndicatorView extends View {
     private int rectSideSizeY;
     private int borderSizeY;
 
-
-
-
     public IndicatorView(Context context) {
         super(context);
         this.context = context;
-        setOwnParams();
-    }
 
-
-    private void setOwnParams() {
-//        setBackgroundColor(Color.RED);
     }
 
     @Override
@@ -91,14 +81,11 @@ public class IndicatorView extends View {
 
     private void getSizes(int height, int width){
 
-        float fHeight = height;
-        float fWidth = width;
+        float fxSize = ((float) width /400)*70;
+        float fxBorder = ((float) width /400)*110;
 
-        float fxSize = (fWidth/400)*70;
-        float fxBorder = (fWidth/400)*110;
-
-        float fySize = (fHeight/400)*70;
-        float fyBorder = (fHeight/400)*110;
+        float fySize = ((float) height /400)*70;
+        float fyBorder = ((float) height /400)*110;
 
         rectSideSizeX = (int) fxSize;
         borderSizeX = (int) fxBorder;

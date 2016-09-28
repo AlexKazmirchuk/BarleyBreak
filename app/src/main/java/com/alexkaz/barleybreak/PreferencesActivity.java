@@ -27,7 +27,7 @@ public class PreferencesActivity extends Activity implements View.OnClickListene
         settingTitle = (TextView)findViewById(R.id.settingTitle);
 
         diffBtn = (Button)findViewById(R.id.diffBtn);
-        musicSwitcherBtn = (Button)findViewById(R.id.soundSwitherBtn);
+        musicSwitcherBtn = (Button)findViewById(R.id.soundSwitcherBtn);
         clearStatsBtn = (Button)findViewById(R.id.clearStatsBtn);
         aboutBtn = (Button)findViewById(R.id.aboutBtn);
 
@@ -61,7 +61,7 @@ public class PreferencesActivity extends Activity implements View.OnClickListene
                 switch (diffBtn.getText().toString()){
                     case "Difficulty: low":
 
-                        diffBtn.setText("Difficulty: medium");
+                        diffBtn.setText(R.string.difficulty_medium);
                         getSharedPreferences(
                                 LaunchActivity.MY_SETTING,
                                 Activity.MODE_PRIVATE)
@@ -71,7 +71,7 @@ public class PreferencesActivity extends Activity implements View.OnClickListene
                         break;
                     case "Difficulty: medium":
 
-                        diffBtn.setText("Difficulty: high");
+                        diffBtn.setText(R.string.difficulty_high);
                         getSharedPreferences(
                                 LaunchActivity.MY_SETTING,
                                 Activity.MODE_PRIVATE)
@@ -81,7 +81,7 @@ public class PreferencesActivity extends Activity implements View.OnClickListene
                         break;
                     case "Difficulty: high":
 
-                        diffBtn.setText("Difficulty: low");
+                        diffBtn.setText(R.string.difficulty_low);
                         getSharedPreferences(
                                 LaunchActivity.MY_SETTING,
                                 Activity.MODE_PRIVATE)
@@ -91,10 +91,10 @@ public class PreferencesActivity extends Activity implements View.OnClickListene
                         break;
                 }
                 break;
-            case R.id.soundSwitherBtn:
+            case R.id.soundSwitcherBtn:
                 switch (musicSwitcherBtn.getText().toString()){
                     case "Sound: on":
-                        musicSwitcherBtn.setText("Sound: off");
+                        musicSwitcherBtn.setText(R.string.sound_off);
                         getSharedPreferences(
                                 LaunchActivity.MY_SETTING,
                                 Activity.MODE_PRIVATE)
@@ -103,7 +103,7 @@ public class PreferencesActivity extends Activity implements View.OnClickListene
                                 .apply();
                         break;
                     case "Sound: off":
-                        musicSwitcherBtn.setText("Sound: on");
+                        musicSwitcherBtn.setText(R.string.sound_on);
                         getSharedPreferences(
                                 LaunchActivity.MY_SETTING,
                                 Activity.MODE_PRIVATE)
@@ -141,14 +141,14 @@ public class PreferencesActivity extends Activity implements View.OnClickListene
                 pref = "high";
                 break;
         }
-        diffBtn.setText("Difficulty: " + pref);
+        diffBtn.setText(String.valueOf("Difficulty: " + pref));
 
 
         if (getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).getBoolean(LaunchActivity.SOUND_SWITCHER,false)){
-            musicSwitcherBtn.setText("Sound: on");
+            musicSwitcherBtn.setText(R.string.sound_on);
         }
         else {
-            musicSwitcherBtn.setText("Sound: off");
+            musicSwitcherBtn.setText(R.string.sound_off);
         }
     }
 }

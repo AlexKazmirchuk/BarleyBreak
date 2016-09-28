@@ -2,4 +2,19 @@
     <string name="app_name">BarleyBreak</string>
     <string name="scores">SCORES:0</string>
     <string name="best_record_text">79</string>
+    <string name="txt_limit_step_default_value">STEPS:300</string>
+    <string name="restart_btn_text">RESTART</string>
+    <string name="all_info_title_text">ALL INFORMATION</string>
+    <string name="best_record_panel_title_text">BEST RECORD</string>
+    <string name="right_collected_title_text">RIGHT COLLECTED</string>
+    <string name="setting_title_text">Settings</string>
+    <string name="diff_btn_default_text">Difficulty: medium</string>
+    <string name="sound_switcher_default_text">Sound: on</string>
+    <string name="clear_stats_btn_text">Clear statistic</string>
+    <string name="about_btn_text">About</string>
+    <string name="difficulty_medium">Difficulty: medium</string>
+    <string name="difficulty_high">Difficulty: high</string>
+    <string name="difficulty_low">Difficulty: low</string>
+    <string name="sound_off">Sound: off</string>
+    <string name="sound_on">Sound: on</string>
 </resources>

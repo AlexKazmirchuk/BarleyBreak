@@ -6,19 +6,13 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.util.Log;
 
 import com.alexkaz.barleybreak.GameFieldActivity;
 import com.alexkaz.barleybreak.R;
 
 public class Cell {
 
-    public static final int SIZE = 88;
-    public static final int BORDER = 4;
-    public static final int PIVOT = 10;
-
     // Свойства
-
     public GameFieldActivity context;
     public Bitmap skinImage;
     public Location location;
@@ -28,11 +22,6 @@ public class Cell {
 
     private int sizeX ;
     private int sizeY ;
-    private int borderX ;
-
-    private int pivotX ;
-    private int borderY ;
-    private int pivotY ;
 
     private boolean locker = true;
 
@@ -58,113 +47,6 @@ public class Cell {
         numberPaint = new Paint();
         numberPaint.setTypeface(context.getDigitTapeFace());
     }
-
-    private void selectSkinImage1(int id){
-        switch (id){
-            case 1:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_1);
-                break;
-            case 2:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_2);
-                break;
-            case 3:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_3);
-                break;
-            case 4:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_4);
-                break;
-            case 5:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_5);
-                break;
-            case 6:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_6);
-                break;
-            case 7:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_7);
-                break;
-            case 8:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_8);
-                break;
-            case 9:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_9);
-                break;
-            case 10:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_10);
-                break;
-            case 11:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_11);
-                break;
-            case 12:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_12);
-                break;
-            case 13:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_13);
-                break;
-            case 14:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_14);
-                break;
-            case 15:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_15);
-                break;
-            case 16:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_sixteen);
-                break;
-        }
-    }
-
-    private void selectSkinImage(int id){
-        switch (id){
-            case 1:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_one);
-                break;
-            case 2:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_two);
-                break;
-            case 3:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_three);
-                break;
-            case 4:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_four);
-                break;
-            case 5:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_five);
-                break;
-            case 6:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_six);
-                break;
-            case 7:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_seven);
-                break;
-            case 8:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_eight);
-                break;
-            case 9:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_nine);
-                break;
-            case 10:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_ten);
-                break;
-            case 11:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_eleven);
-                break;
-            case 12:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_twelve);
-                break;
-            case 13:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_thirteen);
-                break;
-            case 14:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_fourteen);
-                break;
-            case 15:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_fifteen);
-                break;
-            case 16:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_sixteen);
-                break;
-        }
-    }
-
 
     public void draw(Canvas g){
         if (locker){
@@ -209,16 +91,16 @@ public class Cell {
         float fyPivot = ((float) height /400.0f)*12; //15
 
         sizeX = (int) fxSize;
-        borderX = (int) fxBorder;
-        pivotX = (int) fxPivot;
+        int borderX = (int) fxBorder;
+        int pivotX = (int) fxPivot;
         sizeY = (int) fySize;
-        borderY = (int) fyBorder;
-        pivotY = (int) fyPivot;
+        int borderY = (int) fyBorder;
+        int pivotY = (int) fyPivot;
 
         numberPaint.setTextSize(sizeX * 0.594252f);
         textPivot = Math.round(sizeX * 0.046f);
-        location.posX = (sizeX*x) + borderX*x + pivotX;
-        location.posY = (sizeY*y) + borderY*y + pivotY;
+        location.posX = (sizeX*x) + borderX *x + pivotX;
+        location.posY = (sizeY*y) + borderY *y + pivotY;
         if (id == 16){
             skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.cell_sixteen);
         } else {
