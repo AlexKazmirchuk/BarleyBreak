@@ -1,6 +1,7 @@
 package com.alexkaz.barleybreak;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -17,6 +18,7 @@ public class PreferencesActivity extends Activity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.preferences);
         initComp();
+        loadFont();
         setBtnListeners();
         loadPreferences();
         setAnim();
@@ -29,6 +31,15 @@ public class PreferencesActivity extends Activity implements View.OnClickListene
         musicSwitcherBtn = (Button)findViewById(R.id.soundSwitcherBtn);
         clearStatsBtn = (Button)findViewById(R.id.clearStatsBtn);
         aboutBtn = (Button)findViewById(R.id.aboutBtn);
+    }
+
+    private void loadFont(){
+        Typeface impactTypeFace = Typeface.createFromAsset(getAssets(), "impact.ttf");
+        settingTitle.setTypeface(impactTypeFace);
+        diffBtn.setTypeface(impactTypeFace);
+        musicSwitcherBtn.setTypeface(impactTypeFace);
+        clearStatsBtn.setTypeface(impactTypeFace);
+        aboutBtn.setTypeface(impactTypeFace);
     }
 
     private void setBtnListeners(){
