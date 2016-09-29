@@ -1,0 +1,22 @@
+<resources>
+
+    <string name="scores">ОЧКИ:0</string>
+
+    <string name="new_game_btn_text">НОВА ГРА</string>
+    <string name="options_btn_text">НАЛАШТУВАННЯ</string>
+    <string name="exit_btn_text">ВИЙТИ</string>
+
+    <string name="txt_limit_text">КРОКИ:</string>
+    <string name="txt_scores_text">ОЧКИ:</string>
+    <string name="restart_btn_text">НОВА ГРА</string>
+    <string name="all_info_title_text">Статистика</string>
+    <string name="best_record_panel_title_text">Кращий результат</string>
+    <string name="right_collected_title_text">ВІРНО СКЛАДЕНО</string>
+
+    <string name="setting_title_text">НАЛАШТУВАННЯ</string>
+    <string name="clear_stats_btn_text">Очистити результати</string>
+    <string name="about_btn_text">Про програму</string>
+
+    <string name="alert_btn_text">ГРАТИ ЗНОВУ</string>
+
+</resources>
