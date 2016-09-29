@@ -37,6 +37,8 @@ public class GameFieldActivity extends AppCompatActivity {
 
 
     private void initComp(){
+        digitTapeFace = Typeface.createFromAsset(getAssets(),"digital.TTF");
+        
         stepInfo = (PercentRelativeLayout)findViewById(R.id.stepInfo);
         txtScores = (TextView)findViewById(R.id.txtScores);
         txtLimitStep = (TextView)findViewById(R.id.txtLimitStep);
@@ -61,9 +63,7 @@ public class GameFieldActivity extends AppCompatActivity {
     }
 
     private void loadFonts(){
-        digitTapeFace = Typeface.createFromAsset(getAssets(),"digital.TTF");
         Typeface impactTypeFace = Typeface.createFromAsset(getAssets(), "impact.ttf");
-
         ((TextView)findViewById(R.id.allInfoTitle)).setTypeface(impactTypeFace);
         ((TextView)findViewById(R.id.bestScorePanelTitle)).setTypeface(impactTypeFace);
         ((TextView)findViewById(R.id.rightCollectedTitle)).setTypeface(impactTypeFace);
