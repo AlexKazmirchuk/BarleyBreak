@@ -6,7 +6,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.media.AudioManager;
 import android.media.SoundPool;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -35,9 +34,6 @@ public class GameFieldCanvas extends View {
     private int stepCount;
     private int minStepCount = 0;
 
-//    int posX = 156;
-//    int posY = 134;
-
     public GameFieldCanvas(Context context) {
         super(context);
         this.context = (GameFieldActivity) context;
@@ -64,10 +60,7 @@ public class GameFieldCanvas extends View {
         soundPool3.load(context,R.raw.game_over_sound, 1);
     }
 
-
-    private void setOwnParameters() {
-//        setBackgroundColor(Color.LTGRAY);
-
+    private void setOwnParameters() { // TODO clean method
         setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent e) {
@@ -80,12 +73,9 @@ public class GameFieldCanvas extends View {
                             }
                             stepCount++;
                         }
-
-//                        String res = Math.round(e.getX()) + " " + Math.round(e.getY());
-//                        Log.d("myTag",res);
                         invalidate();
 
-                        boolean isSorted =  cellPositionManager.verifyOrders();
+                        boolean isSorted =  cellPositionManager.verifyOrder();
 
                         if (isSorted){
                             checkRecord(stepCount);
@@ -118,12 +108,9 @@ public class GameFieldCanvas extends View {
                             txtBestScores.setText(String.valueOf(context.loadBestScores()));
                             txtScores.setText(String.valueOf(context.getString(R.string.txt_scores_text) + 0));
                             context.stepProgressBar.setProgress(0);
-
-                            Log.d("myTag", "У вас закінчились кроки , ви програли!");
-
                         }
 
-                        isOrdered();
+                        getOrderedCellsCount();
                         indicatorView.setRightOrder(rightOrder);
                         indicatorView.invalidate();
                         break;
@@ -134,9 +121,7 @@ public class GameFieldCanvas extends View {
     }
 
     private void checkRecord(int realCount) {
-
         int bestRecord = context.getSharedPreferences(LaunchActivity.MY_SETTING, Activity.MODE_PRIVATE).getInt(LaunchActivity.BEST_RECORD,1000);
-
         if (bestRecord >= realCount){
             context.getSharedPreferences(
                     LaunchActivity.MY_SETTING,
@@ -145,31 +130,11 @@ public class GameFieldCanvas extends View {
                     .putInt(LaunchActivity.BEST_RECORD,realCount)
                     .apply();
         }
-
     }
 
-
-    private void isOrdered(){
-//        int count = 1;
-//
-//        for (int i = 0; i < 4; i++) {
-//            for (int j = 0; j < 4; j++) {
-//                int bufX = cellPositionManager.cells[i][j].location.posX/ Cell.SIZE;
-//                int bufY = cellPositionManager.cells[i][j].location.posY/ Cell.SIZE;
-//
-//                int id = bufX*4 + bufY;
-//
-//                Log.d("myTag",String.valueOf(id));
-//                //Log.d("myTag",String.valueOf(count));
-//
-//                if (count == id){
-//                    rightOrder++;
-//                }
-//                count++;
-//            }
-//        }
+    private void getOrderedCellsCount(){
         int count  = 1;
-        int rightOrder = 0;
+        int orderedCount = 0;
 
         for (int i = 0; i < cellPositionManager.cells.length; i++) {
             for (int j = 0; j < cellPositionManager.cells[i].length; j++) {
@@ -179,29 +144,25 @@ public class GameFieldCanvas extends View {
                     buf -=1;
                 }
                 if(id == count && i == buf){
-                    rightOrder +=1;
+                    orderedCount += 1;
                     count++;
                 }
                 else {
                     break;
                 }
-//                String log1 = "cell[" + i + "][" + j + "] = " + id;
-//                Log.d("myIdTag",log1);
             }
         }
-        this.rightOrder = rightOrder;
+        this.rightOrder = orderedCount;
     }
-
 
     public void restartGame(){
         cellPositionManager.initComponents();
         stepCount = 0;
-        rightOrder=0;
+        rightOrder = 0;
         indicatorView.setRightOrder(rightOrder);
         indicatorView.invalidate();
         invalidate();
     }
-
 
     public void setTxtScores(TextView txtScores) {
         this.txtScores = txtScores;
@@ -217,15 +178,8 @@ public class GameFieldCanvas extends View {
         cellPositionManager.draw(canvas);
     }
 
-    private void youWonDialog(){
-        View alertView = context.getLayoutInflater().inflate(R.layout.win_dialog, new LinearLayout(context));
-
-        final Dialog myDialog = new Dialog(context, R.style.CustomAlertDialog);
-        myDialog.setContentView(alertView);
-
-        Button alertBtn = (Button) alertView.findViewById(R.id.alertBtn);
-
-        alertBtn.setOnClickListener(new OnClickListener() {
+    private OnClickListener createOnClickListener(final Dialog myDialog){
+        return new OnClickListener() {
             @Override
             public void onClick(View v) {
                 myDialog.cancel();
@@ -233,7 +187,17 @@ public class GameFieldCanvas extends View {
                 soundPool2.pause(1);
                 Toast.makeText(context,"Game restarted",Toast.LENGTH_SHORT).show();
             }
-        });
+        };
+    }
+
+    private void youWonDialog(){
+        View alertView = context.getLayoutInflater().inflate(R.layout.win_dialog, new LinearLayout(context));
+
+        final Dialog myDialog = new Dialog(context, R.style.CustomAlertDialog);
+        myDialog.setContentView(alertView);
+
+        Button alertBtn = (Button) alertView.findViewById(R.id.alertBtn);
+        alertBtn.setOnClickListener(createOnClickListener(myDialog));
         myDialog.show();
     }
 
@@ -244,16 +208,7 @@ public class GameFieldCanvas extends View {
         myDialog.setContentView(alertView);
 
         Button alertBtn = (Button) alertView.findViewById(R.id.alertLoseBtn);
-
-        alertBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myDialog.cancel();
-                restartGame();
-                soundPool2.pause(1);
-                Toast.makeText(context,"Game restarted",Toast.LENGTH_SHORT).show();
-            }
-        });
+        alertBtn.setOnClickListener(createOnClickListener(myDialog));
         myDialog.show();
     }
 

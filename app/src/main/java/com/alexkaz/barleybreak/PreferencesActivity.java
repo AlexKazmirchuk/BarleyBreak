@@ -7,9 +7,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class PreferencesActivity extends Activity implements View.OnClickListener{
-    private TextView settingTitle;
+public class PreferencesActivity extends Activity implements View.OnClickListener {
 
+    private TextView settingTitle;
     private Button diffBtn, musicSwitcherBtn, clearStatsBtn, aboutBtn;
 
     @Override
@@ -17,11 +17,10 @@ public class PreferencesActivity extends Activity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.preferences);
         initComp();
+        setBtnListeners();
         loadPreferences();
         setAnim();
     }
-
-
 
     private void initComp() {
         settingTitle = (TextView)findViewById(R.id.settingTitle);
@@ -30,13 +29,13 @@ public class PreferencesActivity extends Activity implements View.OnClickListene
         musicSwitcherBtn = (Button)findViewById(R.id.soundSwitcherBtn);
         clearStatsBtn = (Button)findViewById(R.id.clearStatsBtn);
         aboutBtn = (Button)findViewById(R.id.aboutBtn);
+    }
 
+    private void setBtnListeners(){
         diffBtn.setOnClickListener(this);
         musicSwitcherBtn.setOnClickListener(this);
         clearStatsBtn.setOnClickListener(this);
         aboutBtn.setOnClickListener(this);
-
-
     }
 
     private void setAnim() {
@@ -55,7 +54,7 @@ public class PreferencesActivity extends Activity implements View.OnClickListene
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v) { // TODO clean method
         switch (v.getId()){
             case R.id.diffBtn:
                 switch (diffBtn.getText().toString()){
@@ -66,7 +65,7 @@ public class PreferencesActivity extends Activity implements View.OnClickListene
                                 LaunchActivity.MY_SETTING,
                                 Activity.MODE_PRIVATE)
                                 .edit()
-                                .putInt(LaunchActivity.DIFFICULTY,1)
+                                .putInt(LaunchActivity.DIFFICULTY,200)
                                 .apply();
                         break;
                     case "Difficulty: medium":
@@ -76,7 +75,7 @@ public class PreferencesActivity extends Activity implements View.OnClickListene
                                 LaunchActivity.MY_SETTING,
                                 Activity.MODE_PRIVATE)
                                 .edit()
-                                .putInt(LaunchActivity.DIFFICULTY,2)
+                                .putInt(LaunchActivity.DIFFICULTY,100)
                                 .apply();
                         break;
                     case "Difficulty: high":
@@ -86,7 +85,7 @@ public class PreferencesActivity extends Activity implements View.OnClickListene
                                 LaunchActivity.MY_SETTING,
                                 Activity.MODE_PRIVATE)
                                 .edit()
-                                .putInt(LaunchActivity.DIFFICULTY,0)
+                                .putInt(LaunchActivity.DIFFICULTY,300)
                                 .apply();
                         break;
                 }
@@ -126,18 +125,18 @@ public class PreferencesActivity extends Activity implements View.OnClickListene
         }
     }
 
-    private void loadPreferences() {
+    private void loadPreferences() { // TODO clean method
 
         String pref = "";
-        switch (getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).getInt(LaunchActivity.DIFFICULTY,0)){
-            case 0:
+        switch (getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).getInt(LaunchActivity.DIFFICULTY,200)){
+            case 300:
 //                +  getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).contains(LaunchActivity.BEST_RECORD)
                 pref = "low";
                 break;
-            case 1:
+            case 200:
                 pref = "medium";
                 break;
-            case 2:
+            case 100:
                 pref = "high";
                 break;
         }

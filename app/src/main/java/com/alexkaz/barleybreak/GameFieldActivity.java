@@ -1,6 +1,5 @@
 package com.alexkaz.barleybreak;
 
-
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -14,15 +13,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class GameFieldActivity extends AppCompatActivity {
+
     private FrameLayout gameFieldPanel, indicatorPanel;
     private PercentRelativeLayout allInfo;
     private PercentRelativeLayout stepInfo;
 
     private TextView txtBestScores, txtScores, txtLimitStep;
-    private Button restartBtn;
-
     public ProgressBar stepProgressBar;
-
+    private Button restartBtn;
     private GameFieldCanvas gameFieldCanvas;
 
     private Typeface digitTapeFace;
@@ -31,42 +29,40 @@ public class GameFieldActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_field);
-
         initComp();
-        setAnim();
+        loadFonts();
+        initAndStartAnim();
         loadPrefs();
     }
 
 
-
-
     private void initComp(){
-        digitTapeFace = Typeface.createFromAsset(getAssets(),"digital.TTF");
-        Typeface impactTypeFace = Typeface.createFromAsset(getAssets(), "impact.ttf");
-        gameFieldPanel = (FrameLayout)findViewById(R.id.gameFieldPanel);
-        indicatorPanel = (FrameLayout)findViewById(R.id.indicatorPanel);
-        allInfo = (PercentRelativeLayout)findViewById(R.id.all_info);
         stepInfo = (PercentRelativeLayout)findViewById(R.id.stepInfo);
-
         txtScores = (TextView)findViewById(R.id.txtScores);
-        txtBestScores = (TextView)findViewById(R.id.txtBestScores);
         txtLimitStep = (TextView)findViewById(R.id.txtLimitStep);
-
         stepProgressBar = (ProgressBar) findViewById(R.id.stepProgressBar);
-
-        txtBestScores.setText(String.valueOf(loadBestScores()));
 
         restartBtn = (Button)findViewById(R.id.restartBtn);
 
+        allInfo = (PercentRelativeLayout)findViewById(R.id.all_info);
+        txtBestScores = (TextView)findViewById(R.id.txtBestScores);
+        indicatorPanel = (FrameLayout)findViewById(R.id.indicatorPanel);
+        IndicatorView indicatorView = new IndicatorView(this);
+        indicatorPanel.addView(indicatorView);
+
         gameFieldCanvas = new GameFieldCanvas(this);
+        gameFieldCanvas.setIndicatorView(indicatorView);
+        gameFieldPanel = (FrameLayout)findViewById(R.id.gameFieldPanel);
+        gameFieldPanel.addView(gameFieldCanvas);
+
+        txtBestScores.setText(String.valueOf(loadBestScores()));
         gameFieldCanvas.setTxtScores(txtScores);
         gameFieldCanvas.setTxtBestScores(txtBestScores);
+    }
 
-        IndicatorView indicatorView = new IndicatorView(this);
-        gameFieldCanvas.setIndicatorView(indicatorView);
-
-        gameFieldPanel.addView(gameFieldCanvas);
-        indicatorPanel.addView(indicatorView);
+    private void loadFonts(){
+        digitTapeFace = Typeface.createFromAsset(getAssets(),"digital.TTF");
+        Typeface impactTypeFace = Typeface.createFromAsset(getAssets(), "impact.ttf");
 
         ((TextView)findViewById(R.id.allInfoTitle)).setTypeface(impactTypeFace);
         ((TextView)findViewById(R.id.bestScorePanelTitle)).setTypeface(impactTypeFace);
@@ -75,10 +71,9 @@ public class GameFieldActivity extends AppCompatActivity {
         txtScores.setTypeface(impactTypeFace);
         txtLimitStep.setTypeface(impactTypeFace);
         restartBtn.setTypeface(impactTypeFace);
-
     }
 
-    private void setAnim(){
+    private void initAndStartAnim(){
         stepInfo.startAnimation(AnimationUtils.loadAnimation(this,R.anim.scores_anim));
         restartBtn.startAnimation(AnimationUtils.loadAnimation(this,R.anim.restart_btn_anim));
         allInfo.startAnimation(AnimationUtils.loadAnimation(this,R.anim.all_info_anim));
@@ -87,30 +82,11 @@ public class GameFieldActivity extends AppCompatActivity {
         gameFieldPanel.startAnimation(AnimationUtils.loadAnimation(this,R.anim.gamefield_anim));
     }
 
-    public void onRestart(View view) {
-        txtScores.setText(R.string.scores);
-        gameFieldCanvas.restartGame();
-        stepProgressBar.setProgress(0);
-    }
-
-
     private void loadPrefs() {
-        int limitStep = 0;
-        switch (getSharedPreferences(LaunchActivity.MY_SETTING, Activity.MODE_PRIVATE).getInt(LaunchActivity.DIFFICULTY,0)){
-            case 0:
-                limitStep = 800;
-                break;
-            case 1:
-                limitStep = 500;
-                break;
-            case 2:
-                limitStep = 300;
-                break;
-        }
+        int limitStep = getSharedPreferences(LaunchActivity.MY_SETTING, Activity.MODE_PRIVATE).getInt(LaunchActivity.DIFFICULTY,200);
         txtLimitStep.setText(String.valueOf(getString(R.string.txt_limit_text) + limitStep));
         gameFieldCanvas.setMinStepCount(limitStep);
         stepProgressBar.setMax(limitStep);
-
     }
 
     public int loadBestScores(){
@@ -120,6 +96,12 @@ public class GameFieldActivity extends AppCompatActivity {
         } else {
             return getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).getInt(LaunchActivity.BEST_RECORD,1);
         }
+    }
+
+    public void onRestartBtnClick(View view) {
+        txtScores.setText(R.string.scores);
+        gameFieldCanvas.restartGame();
+        stepProgressBar.setProgress(0);
     }
 
     @Override

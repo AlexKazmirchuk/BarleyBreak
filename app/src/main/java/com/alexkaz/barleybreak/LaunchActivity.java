@@ -12,15 +12,14 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 
 public class LaunchActivity extends AppCompatActivity {
-    private Button newGame, options, exit;
-    private FrameLayout gameTitle, gameTitlePicture;
-
 
     public static final String MY_SETTING = "my_setting";
     public static final String BEST_RECORD = "bestRecord";
     public static final String SOUND_SWITCHER = "soundSwitcher";
     public static final String DIFFICULTY = "difficulty";
 
+    private Button newGame, options, exit;
+    private FrameLayout gameTitle, gameTitlePicture;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,19 +27,22 @@ public class LaunchActivity extends AppCompatActivity {
         setContentView(R.layout.main);
 
         initComp();
+        loadFonts();
         setAnim();
         createPrefs();
     }
 
     private void initComp(){
-        Typeface neuralTypeFace = Typeface.createFromAsset(getAssets(), "NEURAL2.TTF");
         gameTitle = (FrameLayout)findViewById(R.id.gameTitle);
         gameTitlePicture = (FrameLayout)findViewById(R.id.game_title_picture);
 
         newGame = (Button)findViewById(R.id.newGame);
         options = (Button)findViewById(R.id.options);
         exit = (Button)findViewById(R.id.exit);
+    }
 
+    private void loadFonts(){
+        Typeface neuralTypeFace = Typeface.createFromAsset(getAssets(), "NEURAL2.TTF");
         newGame.setTypeface(neuralTypeFace);
         options.setTypeface(neuralTypeFace);
         exit.setTypeface(neuralTypeFace);
@@ -70,7 +72,7 @@ public class LaunchActivity extends AppCompatActivity {
         }
 
         if (!mySettings.contains(DIFFICULTY)) {
-            editor.putInt(DIFFICULTY,0);
+            editor.putInt(DIFFICULTY,200);
             editor.apply();
         }
     }
