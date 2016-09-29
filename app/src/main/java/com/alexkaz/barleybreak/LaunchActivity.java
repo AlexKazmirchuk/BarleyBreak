@@ -42,10 +42,17 @@ public class LaunchActivity extends AppCompatActivity {
     }
 
     private void loadFonts(){
-        Typeface neuralTypeFace = Typeface.createFromAsset(getAssets(), "NEURAL2.TTF");
-        newGame.setTypeface(neuralTypeFace);
-        options.setTypeface(neuralTypeFace);
-        exit.setTypeface(neuralTypeFace);
+        String lang = getResources().getConfiguration().locale.getLanguage();
+        Typeface btnFont;
+        if(lang.equals("en")){
+            btnFont = Typeface.createFromAsset(getAssets(), "NEURAL2.TTF");
+        } else {
+            btnFont = Typeface.createFromAsset(getAssets(), "impact.ttf");
+        }
+
+        newGame.setTypeface(btnFont);
+        options.setTypeface(btnFont);
+        exit.setTypeface(btnFont);
     }
 
     private void setAnim(){
