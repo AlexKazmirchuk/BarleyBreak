@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -20,7 +21,7 @@ public class GameFieldActivity extends AppCompatActivity {
 
     private TextView txtBestScores, txtScores, txtLimitStep;
     public ProgressBar stepProgressBar;
-    private Button restartBtn;
+    private ImageButton restartBtn;
     private GameFieldCanvas gameFieldCanvas;
 
     private Typeface digitTapeFace;
@@ -44,7 +45,7 @@ public class GameFieldActivity extends AppCompatActivity {
         txtLimitStep = (TextView)findViewById(R.id.txtLimitStep);
         stepProgressBar = (ProgressBar) findViewById(R.id.stepProgressBar);
 
-        restartBtn = (Button)findViewById(R.id.restartBtn);
+        restartBtn = (ImageButton)findViewById(R.id.restartBtn);
 
         allInfo = (PercentRelativeLayout)findViewById(R.id.all_info);
         txtBestScores = (TextView)findViewById(R.id.txtBestScores);
@@ -70,7 +71,6 @@ public class GameFieldActivity extends AppCompatActivity {
         txtBestScores.setTypeface(digitTapeFace);
         txtScores.setTypeface(impactTypeFace);
         txtLimitStep.setTypeface(impactTypeFace);
-        restartBtn.setTypeface(impactTypeFace);
     }
 
     private void initAndStartAnim(){

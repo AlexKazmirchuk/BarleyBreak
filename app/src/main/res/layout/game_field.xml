@@ -109,7 +109,7 @@
                     android:layout_marginRight="5dp"/>
 
             </android.support.percent.PercentRelativeLayout>
-            <Button
+            <ImageButton
                 android:id="@+id/restartBtn"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -125,10 +125,7 @@
                 app:layout_marginRightPercent="5%"
 
                 android:background="@drawable/restart_selector"
-                android:text="@string/restart_btn_text"
-                android:textColor="#8b8b81"
-                android:textStyle="bold"
-                android:textSize="16sp"
+                android:src="@drawable/ic_restart"
                 android:onClick="onRestartBtnClick"/>
         </android.support.percent.PercentRelativeLayout>
         <android.support.percent.PercentRelativeLayout
