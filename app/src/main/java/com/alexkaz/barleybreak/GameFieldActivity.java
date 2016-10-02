@@ -67,7 +67,7 @@ public class GameFieldActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.allInfoTitle)).setTypeface(impactTypeFace);
         ((TextView)findViewById(R.id.bestScorePanelTitle)).setTypeface(impactTypeFace);
         ((TextView)findViewById(R.id.rightCollectedTitle)).setTypeface(impactTypeFace);
-        txtBestScores.setTypeface(impactTypeFace);
+        txtBestScores.setTypeface(digitTapeFace);
         txtScores.setTypeface(impactTypeFace);
         txtLimitStep.setTypeface(impactTypeFace);
         restartBtn.setTypeface(impactTypeFace);

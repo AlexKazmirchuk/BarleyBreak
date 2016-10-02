@@ -213,7 +213,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:text="@string/best_record_default_text"
-                    android:textSize="32sp"
+                    android:textSize="35sp"
                     android:textColor="#81a0b8"
                     android:gravity="center_horizontal|center_vertical"/>
             </android.support.percent.PercentRelativeLayout>
