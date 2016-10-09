@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.view.MotionEvent;
@@ -24,10 +25,11 @@ public class GameFieldCanvas extends View {
     private TextView txtScores;
     private TextView txtBestScores;
     private IndicatorView indicatorView;
+    private Typeface impactFont;
 
-    private SoundPool soundPool;
-    private SoundPool soundPool2;
-    private SoundPool soundPool3;
+    private SoundPool soundPool;   //rename
+    private SoundPool soundPool2;  //rename
+    private SoundPool soundPool3;  //rename
 
 
     private int rightOrder;
@@ -45,6 +47,7 @@ public class GameFieldCanvas extends View {
     //Методы
     private void initComponents() {
         cellPositionManager = new CellPositionManager(context);
+        impactFont = Typeface.createFromAsset(context.getAssets(), "impact.ttf");
         initSoundPools();
     }
 
@@ -198,6 +201,7 @@ public class GameFieldCanvas extends View {
 
         Button alertBtn = (Button) alertView.findViewById(R.id.alertBtn);
         alertBtn.setOnClickListener(createOnClickListener(myDialog));
+        alertBtn.setTypeface(impactFont);
         myDialog.show();
     }
 
@@ -209,6 +213,7 @@ public class GameFieldCanvas extends View {
 
         Button alertBtn = (Button) alertView.findViewById(R.id.alertLoseBtn);
         alertBtn.setOnClickListener(createOnClickListener(myDialog));
+        alertBtn.setTypeface(impactFont);
         myDialog.show();
     }
 
