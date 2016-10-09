@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class GameFieldActivity extends AppCompatActivity {
 
-    private FrameLayout gameFieldPanel, indicatorPanel;
+    private FrameLayout gameFieldWrapper, indicatorWrapper;
     private PercentRelativeLayout allInfo;
     private PercentRelativeLayout stepInfo;
 
@@ -31,7 +31,7 @@ public class GameFieldActivity extends AppCompatActivity {
         setContentView(R.layout.game_field);
         initComp();
         loadFonts();
-        initAndStartAnim();
+        initViewAnim();
         loadPrefs();
     }
 
@@ -48,14 +48,14 @@ public class GameFieldActivity extends AppCompatActivity {
 
         allInfo = (PercentRelativeLayout)findViewById(R.id.all_info);
         txtBestScores = (TextView)findViewById(R.id.txtBestScores);
-        indicatorPanel = (FrameLayout)findViewById(R.id.indicatorPanel);
+        indicatorWrapper = (FrameLayout)findViewById(R.id.indicatorPanel);
         IndicatorView indicatorView = new IndicatorView(this);
-        indicatorPanel.addView(indicatorView);
+        indicatorWrapper.addView(indicatorView);
 
         gameFieldCanvas = new GameFieldCanvas(this);
         gameFieldCanvas.setIndicatorView(indicatorView);
-        gameFieldPanel = (FrameLayout)findViewById(R.id.gameFieldPanel);
-        gameFieldPanel.addView(gameFieldCanvas);
+        gameFieldWrapper = (FrameLayout)findViewById(R.id.gameFieldPanel);
+        gameFieldWrapper.addView(gameFieldCanvas);
 
         txtBestScores.setText(String.valueOf(loadBestScores()));
         gameFieldCanvas.setTxtScores(txtScores);
@@ -72,13 +72,13 @@ public class GameFieldActivity extends AppCompatActivity {
         txtLimitStep.setTypeface(impactTypeFace);
     }
 
-    private void initAndStartAnim(){
+    private void initViewAnim(){
         stepInfo.startAnimation(AnimationUtils.loadAnimation(this,R.anim.scores_anim));
         restartBtn.startAnimation(AnimationUtils.loadAnimation(this,R.anim.restart_btn_anim));
         allInfo.startAnimation(AnimationUtils.loadAnimation(this,R.anim.all_info_anim));
         txtBestScores.startAnimation(AnimationUtils.loadAnimation(this,R.anim.best_scores_anim));
-        indicatorPanel.startAnimation(AnimationUtils.loadAnimation(this,R.anim.indicator_anim));
-        gameFieldPanel.startAnimation(AnimationUtils.loadAnimation(this,R.anim.gamefield_anim));
+        indicatorWrapper.startAnimation(AnimationUtils.loadAnimation(this,R.anim.indicator_anim));
+        gameFieldWrapper.startAnimation(AnimationUtils.loadAnimation(this,R.anim.gamefield_anim));
     }
 
     private void loadPrefs() {

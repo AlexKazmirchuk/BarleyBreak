@@ -27,9 +27,9 @@ public class GameFieldCanvas extends View {
     private IndicatorView indicatorView;
     private Typeface impactFont;
 
-    private SoundPool soundPool;   //rename
-    private SoundPool soundPool2;  //rename
-    private SoundPool soundPool3;  //rename
+    private SoundPool clickSound;
+    private SoundPool gameWinSound;
+    private SoundPool gameOverSound;
 
 
     private int rightOrder;
@@ -53,73 +53,14 @@ public class GameFieldCanvas extends View {
 
     @SuppressWarnings("deprecation")
     private void initSoundPools(){
-        soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
-        soundPool.load(context,R.raw.click, 1);
+        clickSound = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+        clickSound.load(context,R.raw.click, 1);
 
-        soundPool2 = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
-        soundPool2.load(context,R.raw.win_sound, 1);
+        gameWinSound = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+        gameWinSound.load(context,R.raw.win_sound, 1);
 
-        soundPool3 = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
-        soundPool3.load(context,R.raw.game_over_sound, 1);
-    }
-
-    private void setOwnParameters() { // TODO clean method
-        setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent e) {
-                switch (e.getAction()){
-                    case MotionEvent.ACTION_DOWN:
-                        if (cellPositionManager.exchangeCells( Math.round(e.getX()), Math.round(e.getY()))){
-
-                            if(context.getSharedPreferences(PreferencesActivity.MY_SETTING, Activity.MODE_PRIVATE).getBoolean(PreferencesActivity.SOUND_SWITCHER,false)){
-                                soundPool.play(1,1,1,0,0,0);
-                            }
-                            stepCount++;
-                        }
-                        invalidate();
-
-                        boolean isSorted =  cellPositionManager.verifyOrder();
-
-                        if (isSorted){
-                            checkRecord(stepCount);
-                            youWonDialog();
-                            boolean isSoundOn = context.getSharedPreferences(PreferencesActivity.MY_SETTING,Activity.MODE_PRIVATE).getBoolean(PreferencesActivity.SOUND_SWITCHER,false);
-                            if(isSoundOn){
-                                soundPool2.play(1,1,1,0,0,0);
-                            }
-                            stepCount = 0;
-                            txtBestScores.setText(String.valueOf(context.loadBestScores()));
-                            txtScores.setText(String.valueOf(context.getString(R.string.txt_scores_text) + 0));
-                            context.stepProgressBar.setProgress(0);
-                        }
-                        else {
-                            txtScores.setText(String.valueOf(context.getString(R.string.txt_scores_text) + stepCount));
-                            context.stepProgressBar.setProgress(stepCount);
-                        }
-
-                        // дописати
-                        if (stepCount == minStepCount){
-                            youLoseDialog();
-                            boolean isSoundOn = context.getSharedPreferences(PreferencesActivity.MY_SETTING,Activity.MODE_PRIVATE).getBoolean(PreferencesActivity.SOUND_SWITCHER,false);
-                            if(isSoundOn){
-                                soundPool3.play(1,1,1,0,0,0);
-                            }
-
-
-                            stepCount = 0;
-                            txtBestScores.setText(String.valueOf(context.loadBestScores()));
-                            txtScores.setText(String.valueOf(context.getString(R.string.txt_scores_text) + 0));
-                            context.stepProgressBar.setProgress(0);
-                        }
-
-                        getOrderedCellsCount();
-                        indicatorView.setRightOrder(rightOrder);
-                        indicatorView.invalidate();
-                        break;
-                }
-                return true;
-            }
-        });
+        gameOverSound = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+        gameOverSound.load(context,R.raw.game_over_sound, 1);
     }
 
     private void checkRecord(int realCount) {
@@ -134,7 +75,7 @@ public class GameFieldCanvas extends View {
         }
     }
 
-    private void getOrderedCellsCount(){
+    private int getOrderedCellsCount(){
         int count  = 1;
         int orderedCount = 0;
 
@@ -154,7 +95,7 @@ public class GameFieldCanvas extends View {
                 }
             }
         }
-        this.rightOrder = orderedCount;
+        return orderedCount;
     }
 
     public void restartGame(){
@@ -186,7 +127,7 @@ public class GameFieldCanvas extends View {
             public void onClick(View v) {
                 myDialog.cancel();
                 restartGame();
-                soundPool2.pause(1);
+                gameWinSound.pause(1);
                 Toast.makeText(context,"Game restarted",Toast.LENGTH_SHORT).show();
             }
         };
@@ -222,5 +163,72 @@ public class GameFieldCanvas extends View {
 
     public void setMinStepCount(int minStepCount) {
         this.minStepCount = minStepCount;
+    }
+
+    private void setOwnParameters() {
+        setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent e) {
+                if(e.getAction() == MotionEvent.ACTION_DOWN){
+                    boolean isCellsSwapped = cellPositionManager.exchangeCells( Math.round(e.getX()), Math.round(e.getY()));
+                    playClickSound(isCellsSwapped);
+                    invalidate();
+                    checkIfSorted();
+                    checkIfStepsEnd();
+                    refreshIndicator();
+                }
+                return true;
+            }
+        });
+    }
+
+    private void playClickSound(boolean isCellsSwapped){
+        if (isCellsSwapped){
+            if(context.getSharedPreferences(PreferencesActivity.MY_SETTING, Activity.MODE_PRIVATE).getBoolean(PreferencesActivity.SOUND_SWITCHER,false)){
+                clickSound.play(1,1,1,0,0,0);
+            }
+            stepCount++;
+        }
+    }
+
+    private void checkIfSorted(){
+        boolean isSorted = cellPositionManager.verifyOrder();
+        if (isSorted){
+            checkRecord(stepCount);
+            youWonDialog();
+            boolean isSoundOn = context.getSharedPreferences(PreferencesActivity.MY_SETTING,Activity.MODE_PRIVATE).getBoolean(PreferencesActivity.SOUND_SWITCHER,false);
+            if(isSoundOn){
+                gameWinSound.play(1,1,1,0,0,0);
+            }
+            resetScores();
+        }
+        else {
+            txtScores.setText(String.valueOf(context.getString(R.string.txt_scores_text) + stepCount));
+            context.stepProgressBar.setProgress(stepCount);
+        }
+    }
+
+    private void checkIfStepsEnd(){
+        if (stepCount == minStepCount){
+            youLoseDialog();
+            boolean isSoundOn = context.getSharedPreferences(PreferencesActivity.MY_SETTING,Activity.MODE_PRIVATE).getBoolean(PreferencesActivity.SOUND_SWITCHER,false);
+            if(isSoundOn){
+                gameOverSound.play(1,1,1,0,0,0);
+            }
+            resetScores();
+        }
+    }
+
+    private void refreshIndicator(){
+        rightOrder = getOrderedCellsCount();
+        indicatorView.setRightOrder(rightOrder);
+        indicatorView.invalidate();
+    }
+
+    private void resetScores(){
+        stepCount = 0;
+        txtBestScores.setText(String.valueOf(context.loadBestScores()));
+        txtScores.setText(String.valueOf(context.getString(R.string.txt_scores_text) + 0));
+        context.stepProgressBar.setProgress(0);
     }
 }

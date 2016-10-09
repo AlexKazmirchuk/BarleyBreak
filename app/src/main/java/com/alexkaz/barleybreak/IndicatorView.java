@@ -11,6 +11,7 @@ public class IndicatorView extends View {
 
     private int rightOrder = 0;
     Context context;
+    private boolean locker = true;
 
     public static final int RECT_SIDE_SIZE = 10;
 
@@ -19,21 +20,27 @@ public class IndicatorView extends View {
 
     private int rectSideSizeY;
     private int borderSizeY;
+    private Paint indicatorPaint;
+    private Rect indicatorRect;
 
     public IndicatorView(Context context) {
         super(context);
         this.context = context;
-
+        indicatorPaint = new Paint();
+        indicatorRect = new Rect(0,0,RECT_SIDE_SIZE,RECT_SIDE_SIZE);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        getSizes(canvas.getHeight(), canvas.getWidth());
+        if (locker){
+            getSizes(canvas.getHeight(), canvas.getWidth());
+            locker = false;
+        }
         drawRects(canvas,rightOrder);
     }
 
-    private void drawRects(Canvas canvas, int rightOrder){ // TODO clean method
+    private void drawRects(Canvas canvas, int rightOrder){
         if (rightOrder < 0){
             rightOrder = 0;
         }
@@ -42,18 +49,15 @@ public class IndicatorView extends View {
         }
         int count = 0;
 
-        Paint p = new Paint();
-        p.setColor(Color.RED);
-        Rect rect = new Rect(0,0,RECT_SIDE_SIZE,RECT_SIDE_SIZE);
+        indicatorPaint.setColor(Color.RED);
 
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 if(count == rightOrder ){
-                    p.setColor(Color.GRAY);
-
+                    indicatorPaint.setColor(Color.GRAY);
                 }
-                rect.set(j*borderSizeX,i*borderSizeY,j*borderSizeX + rectSideSizeX,i*borderSizeY + rectSideSizeY);
-                canvas.drawRect(rect,p);
+                indicatorRect.set(j*borderSizeX,i*borderSizeY,j*borderSizeX + rectSideSizeX,i*borderSizeY + rectSideSizeY);
+                canvas.drawRect(indicatorRect,indicatorPaint);
                 count++;
             }
         }

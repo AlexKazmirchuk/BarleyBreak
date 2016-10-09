@@ -23,7 +23,7 @@ public class LaunchActivity extends AppCompatActivity {
 
         initComp();
         loadFonts();
-        setAnim();
+        initViewAnim();
         createPrefs();
     }
 
@@ -50,7 +50,7 @@ public class LaunchActivity extends AppCompatActivity {
         exit.setTypeface(btnFont);
     }
 
-    private void setAnim(){
+    private void initViewAnim(){
         gameTitle.startAnimation(AnimationUtils.loadAnimation(this,R.anim.game_title_anim));
         gameTitlePicture.startAnimation(AnimationUtils.loadAnimation(this,R.anim.game_title_picture));
 

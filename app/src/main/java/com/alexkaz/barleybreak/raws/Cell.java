@@ -14,6 +14,7 @@ public class Cell {
 
     public static final String NUMBER_SHADOW_COLOR = "#452d2d";
     public static final String NUMBER_COLOR = "#2b1313";
+
     // Свойства
     public GameFieldActivity context;
     public Bitmap skinImage;
@@ -44,13 +45,17 @@ public class Cell {
 
     // Методы
     public void draw(Canvas g){
+        initPaintComps(g);
+        g.drawBitmap(skinImage, this.location.posX, this.location.posY,cellPaint);
+        drawNumber(g);
+    }
+
+    private void initPaintComps(Canvas g){
         if (locker){
             getSizes(g.getHeight(),g.getWidth());
             getBGForCell();
             locker = false;
         }
-        g.drawBitmap(skinImage, this.location.posX, this.location.posY,cellPaint);
-        drawNumber(g);
     }
 
     private void drawNumber(Canvas g){
