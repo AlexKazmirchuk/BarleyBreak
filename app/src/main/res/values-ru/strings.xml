@@ -14,6 +14,11 @@
     <string name="right_collected_title_text">ВЕРНО СОБРАНО</string>
 
     <string name="setting_title_text">НАСТРОЙКИ</string>
+    <string name="difficulty_medium">Сложность: нормально</string>
+    <string name="difficulty_high">Сложность: трудно</string>
+    <string name="difficulty_low">Сложность: легко</string>
+    <string name="sound_off">Звук: выкл</string>
+    <string name="sound_on">Звук: вкл</string>
     <string name="clear_stats_btn_text">Очистить результаты</string>
     <string name="about_btn_text">О приложении</string>
 
