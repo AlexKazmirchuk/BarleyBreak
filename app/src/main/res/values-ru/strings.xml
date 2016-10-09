@@ -19,7 +19,7 @@
     <string name="difficulty_low">Сложность: легко</string>
     <string name="sound_off">Звук: выкл</string>
     <string name="sound_on">Звук: вкл</string>
-    <string name="clear_stats_btn_text">Очистить результаты</string>
+    <string name="clear_stats_btn_text">Сбросить результат</string>
     <string name="about_btn_text">О приложении</string>
 
     <string name="alert_btn_text">ИГРАТЬ СНАЧАЛА</string>

@@ -19,7 +19,7 @@
     <string name="difficulty_low">Складність: легко</string>
     <string name="sound_off">Звук: вимк</string>
     <string name="sound_on">Звук: вмк</string>
-    <string name="clear_stats_btn_text">Очистити результати</string>
+    <string name="clear_stats_btn_text">Скинути результат</string>
     <string name="about_btn_text">Про програму</string>
 
     <string name="alert_btn_text">ГРАТИ ЗНОВУ</string>
