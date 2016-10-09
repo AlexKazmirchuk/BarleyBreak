@@ -7,7 +7,6 @@ import android.support.percent.PercentRelativeLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
@@ -83,18 +82,18 @@ public class GameFieldActivity extends AppCompatActivity {
     }
 
     private void loadPrefs() {
-        int limitStep = getSharedPreferences(LaunchActivity.MY_SETTING, Activity.MODE_PRIVATE).getInt(LaunchActivity.DIFFICULTY,200);
+        int limitStep = getSharedPreferences(PreferencesActivity.MY_SETTING, Activity.MODE_PRIVATE).getInt(PreferencesActivity.DIFFICULTY,PreferencesActivity.MEDIUM);
         txtLimitStep.setText(String.valueOf(getString(R.string.txt_limit_text) + limitStep));
         gameFieldCanvas.setMinStepCount(limitStep);
         stepProgressBar.setMax(limitStep);
     }
 
     public int loadBestScores(){
-        int record = getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).getInt(LaunchActivity.BEST_RECORD,1);
-        if (record == 1000){
+        int record = getSharedPreferences(PreferencesActivity.MY_SETTING,Activity.MODE_PRIVATE).getInt(PreferencesActivity.BEST_RECORD,PreferencesActivity.BEST_RECORD_DEFAULT_VALUE);
+        if (record == PreferencesActivity.BEST_RECORD_DEFAULT_VALUE){
             return 0;
         } else {
-            return getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).getInt(LaunchActivity.BEST_RECORD,1);
+            return getSharedPreferences(PreferencesActivity.MY_SETTING,Activity.MODE_PRIVATE).getInt(PreferencesActivity.BEST_RECORD,PreferencesActivity.BEST_RECORD_DEFAULT_VALUE);
         }
     }
 

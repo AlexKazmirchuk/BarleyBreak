@@ -3,12 +3,23 @@ package com.alexkaz.barleybreak;
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class PreferencesActivity extends Activity implements View.OnClickListener {
+
+    public static final String MY_SETTING = "my_setting";
+    public static final String BEST_RECORD = "bestRecord";
+    public static final String SOUND_SWITCHER = "soundSwitcher";
+    public static final String DIFFICULTY = "difficulty";
+
+    public static final int LOW = 300;
+    public static final int MEDIUM = 200;
+    public static final int HIGH = 100;
+    public static final int BEST_RECORD_DEFAULT_VALUE = 1000;
 
     private TextView settingTitle;
     private Button diffBtn, musicSwitcherBtn, clearStatsBtn, aboutBtn;
@@ -51,7 +62,6 @@ public class PreferencesActivity extends Activity implements View.OnClickListene
 
     private void setAnim() {
         settingTitle.startAnimation(AnimationUtils.loadAnimation(this,R.anim.scores_anim));
-
         diffBtn.startAnimation(AnimationUtils.loadAnimation(this,R.anim.restart_btn_anim));
         musicSwitcherBtn.startAnimation(AnimationUtils.loadAnimation(this,R.anim.all_info_anim));
         clearStatsBtn.startAnimation(AnimationUtils.loadAnimation(this,R.anim.best_scores_anim));
@@ -65,100 +75,75 @@ public class PreferencesActivity extends Activity implements View.OnClickListene
     }
 
     @Override
-    public void onClick(View v) { // TODO clean method
-        switch (v.getId()){
-            case R.id.diffBtn:
-                switch (diffBtn.getText().toString()){
-                    case "Difficulty: low":
-
-                        diffBtn.setText(R.string.difficulty_medium);
-                        getSharedPreferences(
-                                LaunchActivity.MY_SETTING,
-                                Activity.MODE_PRIVATE)
-                                .edit()
-                                .putInt(LaunchActivity.DIFFICULTY,200)
-                                .apply();
-                        break;
-                    case "Difficulty: medium":
-
-                        diffBtn.setText(R.string.difficulty_high);
-                        getSharedPreferences(
-                                LaunchActivity.MY_SETTING,
-                                Activity.MODE_PRIVATE)
-                                .edit()
-                                .putInt(LaunchActivity.DIFFICULTY,100)
-                                .apply();
-                        break;
-                    case "Difficulty: high":
-
-                        diffBtn.setText(R.string.difficulty_low);
-                        getSharedPreferences(
-                                LaunchActivity.MY_SETTING,
-                                Activity.MODE_PRIVATE)
-                                .edit()
-                                .putInt(LaunchActivity.DIFFICULTY,300)
-                                .apply();
-                        break;
-                }
-                break;
-            case R.id.soundSwitcherBtn:
-                switch (musicSwitcherBtn.getText().toString()){
-                    case "Sound: on":
-                        musicSwitcherBtn.setText(R.string.sound_off);
-                        getSharedPreferences(
-                                LaunchActivity.MY_SETTING,
-                                Activity.MODE_PRIVATE)
-                                .edit()
-                                .putBoolean(LaunchActivity.SOUND_SWITCHER,false)
-                                .apply();
-                        break;
-                    case "Sound: off":
-                        musicSwitcherBtn.setText(R.string.sound_on);
-                        getSharedPreferences(
-                                LaunchActivity.MY_SETTING,
-                                Activity.MODE_PRIVATE)
-                                .edit()
-                                .putBoolean(LaunchActivity.SOUND_SWITCHER,true)
-                                .apply();
-                        break;
-                }
-                break;
-            case R.id.clearStatsBtn:
-                getSharedPreferences(
-                        LaunchActivity.MY_SETTING,
-                        Activity.MODE_PRIVATE)
-                        .edit()
-                        .putInt(LaunchActivity.BEST_RECORD, 1000)
-                        .apply();
-                break;
-            case R.id.aboutBtn:
-                break;
+    public void onClick(View v) {
+        if(v.getId() == diffBtn.getId()){
+            int difficulty = getDifficulty();
+            if (difficulty == LOW){
+                diffBtn.setText(R.string.difficulty_medium);
+                setDifficulty(MEDIUM);
+            } else if (difficulty == MEDIUM){
+                diffBtn.setText(R.string.difficulty_high);
+                setDifficulty(HIGH);
+            } else if (difficulty == HIGH){
+                diffBtn.setText(R.string.difficulty_low);
+                setDifficulty(LOW);
+            }
+        } else if(v.getId() == musicSwitcherBtn.getId()){
+            boolean musicMode = getMusicMode();
+            if (musicMode){
+                musicSwitcherBtn.setText(R.string.sound_off);
+                setMusicMode(false);
+            } else {
+                musicSwitcherBtn.setText(R.string.sound_on);
+                setMusicMode(true);
+            }
+        } else if(v.getId() == clearStatsBtn.getId()){
+            getSharedPreferences(MY_SETTING,Activity.MODE_PRIVATE)
+                    .edit()
+                    .putInt(BEST_RECORD, BEST_RECORD_DEFAULT_VALUE)
+                    .apply();
+        } else if(v.getId() == aboutBtn.getId()){
+            Log.d("myLog","About button pressed");
         }
     }
 
-    private void loadPreferences() { // TODO clean method
-
-        String pref = "";
-        switch (getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).getInt(LaunchActivity.DIFFICULTY,200)){
-            case 300:
-//                +  getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).contains(LaunchActivity.BEST_RECORD)
-                pref = "low";
-                break;
-            case 200:
-                pref = "medium";
-                break;
-            case 100:
-                pref = "high";
-                break;
+    private void loadPreferences() {
+        int difficulty = getDifficulty();
+        if (difficulty == LOW){
+            diffBtn.setText(R.string.difficulty_low);
+        } else if (difficulty == MEDIUM){
+            diffBtn.setText(R.string.difficulty_medium);
+        } else if (difficulty == HIGH){
+            diffBtn.setText(R.string.difficulty_high);
         }
-        diffBtn.setText(String.valueOf("Difficulty: " + pref));
 
-
-        if (getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).getBoolean(LaunchActivity.SOUND_SWITCHER,false)){
+        boolean musicMode = getMusicMode();
+        if (musicMode){
             musicSwitcherBtn.setText(R.string.sound_on);
-        }
-        else {
+        } else {
             musicSwitcherBtn.setText(R.string.sound_off);
         }
+    }
+
+    private void setDifficulty(int difficulty){
+        getSharedPreferences(MY_SETTING,Activity.MODE_PRIVATE)
+                .edit()
+                .putInt(DIFFICULTY,difficulty)
+                .apply();
+    }
+
+    private int getDifficulty(){
+        return getSharedPreferences(MY_SETTING,Activity.MODE_PRIVATE).getInt(DIFFICULTY,MEDIUM);
+    }
+
+    private void setMusicMode(boolean mode){
+        getSharedPreferences(MY_SETTING,Activity.MODE_PRIVATE)
+                .edit()
+                .putBoolean(SOUND_SWITCHER,mode)
+                .apply();
+    }
+
+    private boolean getMusicMode(){
+        return getSharedPreferences(MY_SETTING,Activity.MODE_PRIVATE).getBoolean(SOUND_SWITCHER,true);
     }
 }

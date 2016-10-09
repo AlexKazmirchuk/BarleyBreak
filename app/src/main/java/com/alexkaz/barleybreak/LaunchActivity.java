@@ -13,11 +13,6 @@ import android.widget.FrameLayout;
 
 public class LaunchActivity extends AppCompatActivity {
 
-    public static final String MY_SETTING = "my_setting";
-    public static final String BEST_RECORD = "bestRecord";
-    public static final String SOUND_SWITCHER = "soundSwitcher";
-    public static final String DIFFICULTY = "difficulty";
-
     private Button newGame, options, exit;
     private FrameLayout gameTitle, gameTitlePicture;
 
@@ -65,25 +60,24 @@ public class LaunchActivity extends AppCompatActivity {
     }
 
     private void createPrefs() {
-        SharedPreferences mySettings = getSharedPreferences(MY_SETTING, Activity.MODE_PRIVATE);
+        SharedPreferences mySettings = getSharedPreferences(PreferencesActivity.MY_SETTING, Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = mySettings.edit();
 
-        if (!mySettings.contains(BEST_RECORD)) {
-            editor.putInt(BEST_RECORD,1000);
+        if (!mySettings.contains(PreferencesActivity.BEST_RECORD)) {
+            editor.putInt(PreferencesActivity.BEST_RECORD,PreferencesActivity.BEST_RECORD_DEFAULT_VALUE);
             editor.apply();
         }
 
-        if (!mySettings.contains(SOUND_SWITCHER)) {
-            editor.putBoolean(SOUND_SWITCHER,true);
+        if (!mySettings.contains(PreferencesActivity.SOUND_SWITCHER)) {
+            editor.putBoolean(PreferencesActivity.SOUND_SWITCHER,true);
             editor.apply();
         }
 
-        if (!mySettings.contains(DIFFICULTY)) {
-            editor.putInt(DIFFICULTY,200);
+        if (!mySettings.contains(PreferencesActivity.DIFFICULTY)) {
+            editor.putInt(PreferencesActivity.DIFFICULTY,PreferencesActivity.MEDIUM);
             editor.apply();
         }
     }
-
 
     public void startGame(View view) {
         Intent intent = new Intent(this,GameFieldActivity.class);

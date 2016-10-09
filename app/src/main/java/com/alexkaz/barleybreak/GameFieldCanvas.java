@@ -71,7 +71,7 @@ public class GameFieldCanvas extends View {
                     case MotionEvent.ACTION_DOWN:
                         if (cellPositionManager.exchangeCells( Math.round(e.getX()), Math.round(e.getY()))){
 
-                            if(context.getSharedPreferences(LaunchActivity.MY_SETTING, Activity.MODE_PRIVATE).getBoolean(LaunchActivity.SOUND_SWITCHER,false)){
+                            if(context.getSharedPreferences(PreferencesActivity.MY_SETTING, Activity.MODE_PRIVATE).getBoolean(PreferencesActivity.SOUND_SWITCHER,false)){
                                 soundPool.play(1,1,1,0,0,0);
                             }
                             stepCount++;
@@ -83,7 +83,7 @@ public class GameFieldCanvas extends View {
                         if (isSorted){
                             checkRecord(stepCount);
                             youWonDialog();
-                            boolean isSoundOn = context.getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).getBoolean(LaunchActivity.SOUND_SWITCHER,false);
+                            boolean isSoundOn = context.getSharedPreferences(PreferencesActivity.MY_SETTING,Activity.MODE_PRIVATE).getBoolean(PreferencesActivity.SOUND_SWITCHER,false);
                             if(isSoundOn){
                                 soundPool2.play(1,1,1,0,0,0);
                             }
@@ -100,14 +100,13 @@ public class GameFieldCanvas extends View {
                         // дописати
                         if (stepCount == minStepCount){
                             youLoseDialog();
-                            boolean isSoundOn = context.getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).getBoolean(LaunchActivity.SOUND_SWITCHER,false);
+                            boolean isSoundOn = context.getSharedPreferences(PreferencesActivity.MY_SETTING,Activity.MODE_PRIVATE).getBoolean(PreferencesActivity.SOUND_SWITCHER,false);
                             if(isSoundOn){
                                 soundPool3.play(1,1,1,0,0,0);
                             }
 
 
                             stepCount = 0;
-//                            txtBestScores.setText(String.valueOf(context.getSharedPreferences(LaunchActivity.MY_SETTING,Activity.MODE_PRIVATE).getInt(LaunchActivity.BEST_RECORD,1000)));
                             txtBestScores.setText(String.valueOf(context.loadBestScores()));
                             txtScores.setText(String.valueOf(context.getString(R.string.txt_scores_text) + 0));
                             context.stepProgressBar.setProgress(0);
@@ -124,13 +123,13 @@ public class GameFieldCanvas extends View {
     }
 
     private void checkRecord(int realCount) {
-        int bestRecord = context.getSharedPreferences(LaunchActivity.MY_SETTING, Activity.MODE_PRIVATE).getInt(LaunchActivity.BEST_RECORD,1000);
+        int bestRecord = context.getSharedPreferences(PreferencesActivity.MY_SETTING, Activity.MODE_PRIVATE).getInt(PreferencesActivity.BEST_RECORD,PreferencesActivity.BEST_RECORD_DEFAULT_VALUE);
         if (bestRecord >= realCount){
             context.getSharedPreferences(
-                    LaunchActivity.MY_SETTING,
+                    PreferencesActivity.MY_SETTING,
                     Activity.MODE_PRIVATE)
                     .edit()
-                    .putInt(LaunchActivity.BEST_RECORD,realCount)
+                    .putInt(PreferencesActivity.BEST_RECORD,realCount)
                     .apply();
         }
     }
