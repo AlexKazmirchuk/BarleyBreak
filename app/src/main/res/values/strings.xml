@@ -29,5 +29,6 @@
     <string name="about_btn_text">About</string>
 
     <string name="alert_btn_text">PLAY AGAIN</string>
+    <string name="restart_button">restart button</string>
 
 </resources>

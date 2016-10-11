@@ -113,6 +113,7 @@
                 android:id="@+id/restartBtn"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:contentDescription="@string/restart_button"
                 android:layout_toRightOf="@id/stepInfo"
                 android:layout_toEndOf="@id/stepInfo"
 
