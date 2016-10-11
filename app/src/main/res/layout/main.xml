@@ -1,91 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:background="@drawable/background">
-
-    <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_margin="@dimen/root_layout_margin"
-            android:background="@drawable/second_background"
-            android:orientation="vertical">
-
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background">
+    <android.support.percent.PercentRelativeLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="@dimen/root_layout_margin"
+        android:background="@drawable/second_background">
         <FrameLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@drawable/title"
-                android:layout_marginRight="@dimen/game_title_margin"
-                android:layout_marginLeft="@dimen/game_title_margin"
-                android:layout_marginTop="@dimen/game_title_margin"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="@integer/game_title_weight"
-                android:id="@+id/gameTitle"/>
+            android:id="@+id/gameTitle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
 
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+
+            app:layout_heightPercent="12%"
+            app:layout_widthPercent="90%"
+
+            app:layout_marginTopPercent="3%"
+            app:layout_marginLeftPercent="4%"
+            app:layout_marginRightPercent="4%"
+
+            android:background="@drawable/title"/>
         <FrameLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="@dimen/blue_panel_margin"
-                android:layout_weight="@integer/blue_panel_weight"
-                android:background="@drawable/blue_panel">
+            android:id="@+id/game_title_picture"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
 
+            android:layout_below="@id/gameTitle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+
+            app:layout_marginTopPercent="2%"
+            app:layout_marginLeftPercent="5%"
+            app:layout_marginRightPercent="5%"
+
+            app:layout_heightPercent="55%"
+            app:layout_widthPercent="90%"
+
+            android:background="@drawable/blue_panel">
             <FrameLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="@dimen/game_title_picture_margin"
-                    android:background="@drawable/game_field3d"
-                    android:id="@+id/game_title_picture"/>
-
-        </FrameLayout>
-
-        <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_weight="@integer/menu_btn_weight"
-                android:layout_marginBottom="@dimen/menu_btn_margin_bottom"
-                android:orientation="vertical">
+                android:layout_margin="@dimen/game_title_picture_margin"
+                android:background="@drawable/game_field3d"/>
+        </FrameLayout>
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/btnWrapper"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
 
+            android:layout_below="@id/game_title_picture"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+
+            app:layout_marginTopPercent="2%"
+            app:layout_marginBottomPercent="2%"
+            app:layout_marginLeftPercent="20%"
+            app:layout_marginRightPercent="20%"
+
+            app:layout_heightPercent="27%"
+            app:layout_widthPercent="60%">
             <Button
-                android:layout_width="@dimen/button_width"
-                android:layout_height="fill_parent"
+                android:id="@+id/newGame"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_gravity="center_horizontal"
                 android:onClick="startGame"
-                android:layout_weight="1"
-                android:background="@drawable/launch_btn_selector"
                 android:text="@string/new_game_btn_text"
                 android:textColor="#ffaeae"
                 android:textSize="22sp"
-                android:id="@+id/newGame"/>
-            <Button
-                android:layout_width="@dimen/button_width"
 
-                android:layout_height="fill_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+
+                app:layout_heightPercent="33%"
+                app:layout_widthPercent="100%"
+
+                android:background="@drawable/launch_btn_selector"/>
+            <Button
+                android:id="@+id/options"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/launch_btn_selector"
                 android:text="@string/options_btn_text"
                 android:textColor="#ffaeae"
                 android:textSize="22sp"
-                android:id="@+id/options"
-                android:layout_weight="1"
-                android:onClick="startOptions"/>
+                android:onClick="startOptions"
+
+                android:layout_below="@id/newGame"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+
+                app:layout_heightPercent="33%"
+                app:layout_widthPercent="100%"
+
+                android:background="@drawable/launch_btn_selector"/>
             <Button
-                android:layout_width="@dimen/button_width"
-                android:layout_height="fill_parent"
+                android:id="@+id/exit"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/launch_btn_selector"
                 android:text="@string/exit_btn_text"
                 android:textColor="#ffaeae"
                 android:textSize="22sp"
-                android:id="@+id/exit"
-                android:layout_weight="1"
-                android:layout_marginBottom="@dimen/exit_btn_margin_bottom"
-                android:onClick="startExit"/>
+                android:onClick="startExit"
 
-        </LinearLayout>
+                android:layout_below="@id/options"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
 
-    </LinearLayout>
+                app:layout_heightPercent="34%"
+                app:layout_widthPercent="100%"
 
-</LinearLayout>
+                android:background="@drawable/launch_btn_selector"/>
+        </android.support.percent.PercentRelativeLayout>
+    </android.support.percent.PercentRelativeLayout>
+</FrameLayout>
 
