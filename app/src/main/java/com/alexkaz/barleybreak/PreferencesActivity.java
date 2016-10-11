@@ -65,7 +65,7 @@ public class PreferencesActivity extends Activity implements View.OnClickListene
         diffBtn.startAnimation(AnimationUtils.loadAnimation(this,R.anim.restart_btn_anim));
         musicSwitcherBtn.startAnimation(AnimationUtils.loadAnimation(this,R.anim.all_info_anim));
         clearStatsBtn.startAnimation(AnimationUtils.loadAnimation(this,R.anim.best_scores_anim));
-        aboutBtn.startAnimation(AnimationUtils.loadAnimation(this,R.anim.indicator_anim));
+        aboutBtn.startAnimation(AnimationUtils.loadAnimation(this,R.anim.right_collected_panel_anim));
     }
 
     @Override

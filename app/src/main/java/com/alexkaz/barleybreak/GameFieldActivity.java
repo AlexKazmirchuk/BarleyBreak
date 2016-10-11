@@ -76,8 +76,8 @@ public class GameFieldActivity extends AppCompatActivity {
         stepInfo.startAnimation(AnimationUtils.loadAnimation(this,R.anim.scores_anim));
         restartBtn.startAnimation(AnimationUtils.loadAnimation(this,R.anim.restart_btn_anim));
         allInfo.startAnimation(AnimationUtils.loadAnimation(this,R.anim.all_info_anim));
-        txtBestScores.startAnimation(AnimationUtils.loadAnimation(this,R.anim.best_scores_anim));
-        indicatorWrapper.startAnimation(AnimationUtils.loadAnimation(this,R.anim.indicator_anim));
+        findViewById(R.id.bestScorePanel).startAnimation(AnimationUtils.loadAnimation(this,R.anim.best_scores_anim));
+        findViewById(R.id.rightCollectedPanel).startAnimation(AnimationUtils.loadAnimation(this,R.anim.right_collected_panel_anim));
         gameFieldWrapper.startAnimation(AnimationUtils.loadAnimation(this,R.anim.gamefield_anim));
     }
 
