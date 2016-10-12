@@ -5,8 +5,10 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Typeface;
+import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.os.Build;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -53,13 +55,28 @@ public class GameFieldCanvas extends View {
 
     @SuppressWarnings("deprecation")
     private void initSoundPools(){
-        clickSound = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            AudioAttributes attributes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_GAME)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+            clickSound = new SoundPool.Builder()
+                    .setAudioAttributes(attributes)
+                    .build();
+            gameWinSound = new SoundPool.Builder()
+                    .setAudioAttributes(attributes)
+                    .build();
+            gameOverSound = new SoundPool.Builder()
+                    .setAudioAttributes(attributes)
+                    .build();
+        } else {
+            clickSound = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+            gameWinSound = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+            gameOverSound = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+        }
+
         clickSound.load(context,R.raw.click, 1);
-
-        gameWinSound = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
         gameWinSound.load(context,R.raw.win_sound, 1);
-
-        gameOverSound = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
         gameOverSound.load(context,R.raw.game_over_sound, 1);
     }
 
