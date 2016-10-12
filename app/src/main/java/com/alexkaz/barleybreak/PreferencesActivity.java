@@ -1,6 +1,7 @@
 package com.alexkaz.barleybreak;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -103,7 +104,9 @@ public class PreferencesActivity extends Activity implements View.OnClickListene
                     .putInt(BEST_RECORD, BEST_RECORD_DEFAULT_VALUE)
                     .apply();
         } else if(v.getId() == aboutBtn.getId()){
-            Log.d("myLog","About button pressed");
+            Intent intent = new Intent(this,AboutActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.second_to_left, R.anim.first_to_left);
         }
     }
 

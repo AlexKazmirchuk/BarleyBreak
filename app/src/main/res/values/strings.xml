@@ -31,4 +31,10 @@
     <string name="alert_btn_text">PLAY AGAIN</string>
     <string name="restart_button">restart button</string>
 
+    <string name="about_app_title">About app</string>
+    <string name="version">Version: 1.0</string>
+    <string name="author">Author: Kazmirchuk Alexander</string>
+    <string name="my_link"><![CDATA[<a href="https://github.com/AlexKazmirchuk/BarleyBreak">Github link</a>]]></string>
+    <string name="license">Creative Commons music and sound effects from SoundCloud.org</string>
+
 </resources>

@@ -24,4 +24,10 @@
 
     <string name="alert_btn_text">ГРАТИ ЗНОВУ</string>
 
+    <string name="about_app_title">Про програму</string>
+    <string name="version">Версія: 1.0</string>
+    <string name="author">Автор: Казмірчук Олександр</string>
+    <string name="my_link"><![CDATA[<a href="https://github.com/AlexKazmirchuk/BarleyBreak">Посилання на github</a>]]></string>
+    <string name="license">Creative Commons music and sound effects from SoundCloud.org</string>
+
 </resources>
