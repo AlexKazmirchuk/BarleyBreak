@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-<!-- Не використані дані-->
-    <dimen name="game_title_layout_height">70dp</dimen>
-    <dimen name="game_title_layout_bottom_margin">5dp</dimen>
-    <dimen name="blue_panel_side_size">275dp</dimen>
-    <dimen name="button_height">45dp</dimen>
-    <dimen name="second_back_margin">10dp</dimen>
-    <dimen name="scores_field_width">120dp</dimen>
-    <dimen name="scores_field_height">60dp</dimen>
-    <dimen name="scores_field_margin">20dp</dimen>
-    <dimen name="all_info_height">130dp</dimen>
-    <dimen name="best_scores_width">115dp</dimen>
-    <dimen name="best_scores_height">70dp</dimen>
-    <dimen name="best_scores_margins">15dp</dimen>
     <dimen name="game_field_panel_padding">5dp</dimen>
-    <!-- Не використані дані -->
 
+    <!-- values for game field screen -->
+    <dimen name="game_field_panel_margin_top">5dp</dimen>
+    <dimen name="game_field_panel_margin">10dp</dimen>
+    <!-- values for game field screen -->
+
+    <!-- values for launch screen -->
+    <dimen name="root_layout_margin">10dp</dimen>
+    <dimen name="game_title_picture_margin">5dp</dimen>
+    <!-- values for launch screen -->
+
+    <!-- values for preferences screen -->
+    <dimen name="setting_title_text_size">27sp</dimen>
+    <dimen name="first_btn_text_size">24sp</dimen>
+    <dimen name="all_btn_text_size">24sp</dimen>
+    <!-- values for preferences screen -->
 </resources>
