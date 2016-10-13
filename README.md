@@ -4,12 +4,14 @@ This is a simple puzzle game that we all played as a child. Can you sort cells f
 
 ![promo screen](/screenshots/promo.png)
 
-### Other game screenshots
+### All game screenshots
 
 ![screen 1](/screenshots/1.png) ![screen 2](/screenshots/2.png) ![screen 3](/screenshots/3.png)
 ![screen 4](/screenshots/4.png) ![screen 5](/screenshots/5.png) ![screen 6](/screenshots/6.png)
 
-### Version 1.0
+### Version 
+
+ver. 1.0
 
 ### P.S.
 
