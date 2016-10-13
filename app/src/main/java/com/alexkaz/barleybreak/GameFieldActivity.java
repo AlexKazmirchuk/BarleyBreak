@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class GameFieldActivity extends AppCompatActivity {
 
-    private FrameLayout gameFieldWrapper, indicatorWrapper;
+    private FrameLayout gameFieldWrapper;
     private PercentRelativeLayout allInfo;
     private PercentRelativeLayout stepInfo;
 
@@ -48,7 +48,7 @@ public class GameFieldActivity extends AppCompatActivity {
 
         allInfo = (PercentRelativeLayout)findViewById(R.id.all_info);
         txtBestScores = (TextView)findViewById(R.id.txtBestScores);
-        indicatorWrapper = (FrameLayout)findViewById(R.id.indicatorPanel);
+        FrameLayout indicatorWrapper = (FrameLayout) findViewById(R.id.indicatorPanel);
         IndicatorView indicatorView = new IndicatorView(this);
         indicatorWrapper.addView(indicatorView);
 
