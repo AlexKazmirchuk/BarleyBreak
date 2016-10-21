@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">Пятнашки</string>
-
     <string name="scores">ОЧКИ:0</string>
+
+    <string name="best_record_default_text">79</string>
+    <string name="txt_limit_step_default_value">ШАГИ:300</string>
+    <string name="diff_btn_default_text">Сложность: нормально</string>
+    <string name="sound_switcher_default_text">Звук: вкл</string>
+    <string name="restart_button">новая игра</string>
 
     <string name="new_game_btn_text">НОВАЯ ИГРА</string>
     <string name="options_btn_text">НАСТРОЙКИ</string>

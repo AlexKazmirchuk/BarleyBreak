@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">П\'ятнашки</string>
-
     <string name="scores">ОЧКИ:0</string>
+
+    <string name="best_record_default_text">79</string>
+    <string name="txt_limit_step_default_value">КРОКИ:300</string>
+    <string name="diff_btn_default_text">Складність: нормально</string>
+    <string name="sound_switcher_default_text">Звук: вмк</string>
+    <string name="restart_button">нова гра</string>
 
     <string name="new_game_btn_text">НОВА ГРА</string>
     <string name="options_btn_text">НАЛАШТУВАННЯ</string>
