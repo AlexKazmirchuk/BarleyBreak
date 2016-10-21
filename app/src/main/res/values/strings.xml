@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BarleyBreak</string>
+    <string name="app_name">Barley-break</string>
 
     <string name="scores">SCORES:0</string>
     <string name="best_record_default_text">79</string>
