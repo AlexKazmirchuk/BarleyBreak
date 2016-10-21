@@ -43,7 +43,9 @@ public class LaunchActivity extends AppCompatActivity {
             btnFont = Typeface.createFromAsset(getAssets(), "NEURAL2.TTF");
         } else {
             btnFont = Typeface.createFromAsset(getAssets(), "impact.ttf");
-            gameTitle.setBackgroundResource(R.drawable.ru_title);
+            if(lang.equals("ru") || lang.equals("uk")){
+                gameTitle.setBackgroundResource(R.drawable.ru_title);
+            }
         }
 
         newGame.setTypeface(btnFont);
