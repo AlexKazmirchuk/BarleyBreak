@@ -1,5 +1,7 @@
 # Barley-break
 
+<a href="https://play.google.com/store/apps/details?id=com.alexkaz.barleybreak"><img src="http://www.android.com/images/brand/get_it_on_play_logo_large.png"/></a>
+
 This is a simple puzzle game that we all played as a child. Can you sort cells for a certain number of moves? Try your hand and find out. The application can run in android 4.1+. It does not require any permissions or Internet connection. Just play and enjoy the gameplay.
 
 ![promo screen](/screenshots/promo.png)
